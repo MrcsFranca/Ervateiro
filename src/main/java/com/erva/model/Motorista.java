@@ -6,6 +6,22 @@ public class Motorista {
     private String caminhao;
     private Boolean equipeColeta;
 
+    public String getNome() {
+        return nome;
+    }
+
+    public String getCodMotorista() {
+        return codMotorista;
+    }
+
+    public String getCaminhao() {
+        return caminhao;
+    }
+
+    public Boolean getEquipeColeta() {
+        return equipeColeta;
+    }
+
     @Override
     public String toString() {
         return "Motorista{" +
