@@ -76,13 +76,89 @@ public class EntregaDAOJDBC implements EntregaDAO {
             entregaAux.setMotorista(motoristaAux);
             entregaAux.setFornecedor(fornecedorAux);
             entregaAux.setFuncionario(funcionarioAux);
-            entregaAux.setDataHora(resultSet.getTimestamp("dataHora"));
-            entregaAux.setTipoErva(resultSet.getString("tipoErva"));
-            entregaAux.setPeso(resultSet.getDouble("peso"));
-            entregaAux.setDescricao(resultSet.getString("descricao"));
+            entregaAux.setDataHora(this.resultSet.getTimestamp("dataHora"));
+            entregaAux.setTipoErva(this.resultSet.getString("tipoErva"));
+            entregaAux.setPeso(this.resultSet.getDouble("peso"));
+            entregaAux.setDescricao(this.resultSet.getString("descricao"));
             entregas.add(entregaAux);
         }
         close();
         return entregas;
     }
+    public ArrayList<Entrega> buscarEntregas(String nomeMotorista, String nomeFornecedor,
+                                             Timestamp dataInicio, Timestamp dataFim,
+                                             Double pesoMin, Double pesoMax,
+                                             String tipoErva) throws SQLException {
+        ArrayList<Entrega> entregas = new ArrayList<>();
+        open();
+
+        StringBuilder sqlBuilder = new StringBuilder();
+        sqlBuilder.append("""
+        SELECT e.*, m.nome AS nomeMotorista, f.nome AS nomeFornecedor
+        FROM entrega e
+        JOIN motorista m ON e.codMotorista = m.codMotorista
+        JOIN fornecedor f ON e.fornecedorId = f.fornecedorId
+        WHERE 1=1
+    """);
+
+        // Lista dinâmica de parâmetros
+        ArrayList<Object> params = new ArrayList<>();
+
+        if (nomeMotorista != null && !nomeMotorista.isEmpty()) {
+            sqlBuilder.append(" AND m.nome ILIKE ?"); // ILIKE -> busca sem case-sensitive (PostgreSQL)
+            params.add("%" + nomeMotorista + "%");
+        }
+        if (nomeFornecedor != null && !nomeFornecedor.isEmpty()) {
+            sqlBuilder.append(" AND f.nome ILIKE ?");
+            params.add("%" + nomeFornecedor + "%");
+        }
+        if (dataInicio != null) {
+            sqlBuilder.append(" AND e.dataHora >= ?");
+            params.add(dataInicio);
+        }
+        if (dataFim != null) {
+            sqlBuilder.append(" AND e.dataHora <= ?");
+            params.add(dataFim);
+        }
+        if (pesoMin != null) {
+            sqlBuilder.append(" AND e.peso >= ?");
+            params.add(pesoMin);
+        }
+        if (pesoMax != null) {
+            sqlBuilder.append(" AND e.peso <= ?");
+            params.add(pesoMax);
+        }
+        if (tipoErva != null && !tipoErva.isEmpty()) {
+            sqlBuilder.append(" AND e.tipoErva ILIKE ?");
+            params.add("%" + tipoErva + "%");
+        }
+
+        this.preparedStatement = this.connection.prepareStatement(sqlBuilder.toString());
+
+        for (int i = 0; i < params.size(); i++) {
+            this.preparedStatement.setObject(i + 1, params.get(i));
+        }
+
+        this.resultSet = this.preparedStatement.executeQuery();
+        while (this.resultSet.next()) {
+            Entrega entregaAux = new Entrega();
+            Funcionario funcionarioAux = new Funcionario(this.resultSet.getString("cpf"));
+            Fornecedor fornecedorAux = new Fornecedor(this.resultSet.getInt("fornecedorId"));
+            Motorista motoristaAux = new Motorista(this.resultSet.getString("codMotorista"));
+
+            entregaAux.setEntregaId(this.resultSet.getInt("entregaId"));
+            entregaAux.setMotorista(motoristaAux);
+            entregaAux.setFornecedor(fornecedorAux);
+            entregaAux.setFuncionario(funcionarioAux);
+            entregaAux.setDataHora(this.resultSet.getTimestamp("dataHora"));
+            entregaAux.setTipoErva(this.resultSet.getString("tipoErva"));
+            entregaAux.setPeso(this.resultSet.getDouble("peso"));
+            entregaAux.setDescricao(this.resultSet.getString("descricao"));
+            entregas.add(entregaAux);
+        }
+
+        close();
+        return entregas;
+    }
+
 }

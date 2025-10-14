@@ -1,7 +1,7 @@
 package com.erva.DAO;
 
 public interface IConst {
-    public static final String stringDeConexao = "";
-    public static final String usuario = "";
-    public static final String senha = "";
+    public static final String stringDeConexao = "jdbc:postgresql://localhost:5432/SistemaEntregas";
+    public static final String usuario = "postgres";
+    public static final String senha = "161005ll";
 }
