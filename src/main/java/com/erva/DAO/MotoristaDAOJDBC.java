@@ -34,7 +34,39 @@ public class MotoristaDAOJDBC {
         this.preparedStatement.executeUpdate();
         close();
     }
-    public void atualizarMotorista(Motorista motorista){}
-    public void removerMotorista(Motorista motorista){}
-    public ArrayList<Motorista> listarTodosMotorista(){}
+    public void atualizarMotorista(Motorista motorista) throws SQLException {
+        open();
+        this.sql = "UPDATE Motorista SET nome = ?, caminhao = ?, equipe = ? WHERE codMotorista = ?";
+        this.preparedStatement = this.connection.prepareStatement(sql);
+        this.preparedStatement.setString(1, motorista.getNome());
+        this.preparedStatement.setString(2, motorista.getCaminhao());
+        this.preparedStatement.setBoolean(3, motorista.getEquipeColeta());
+        this.preparedStatement.setString(4, motorista.getCodMotorista());
+        this.preparedStatement.executeUpdate();
+        close();
+    }
+    public void removerMotorista(Motorista motorista) throws SQLException {
+        open();
+        this.sql = "DELETE FROM motorista WHERE codMotorista = ?";
+        this.preparedStatement = this.connection.prepareStatement(sql);
+        this.preparedStatement.setString(1, motorista.getCodMotorista());
+        this.preparedStatement.executeUpdate();
+        close();
+    }
+    public ArrayList<Motorista> listarTodosMotorista() throws SQLException {
+        ArrayList<Motorista> motoristas = new ArrayList<>();
+        open();
+        this.sql = "SELECT * FROM motorista";
+        this.preparedStatement = this.connection.prepareStatement(this.sql);
+        this.resultSet = this.preparedStatement.executeQuery();
+        while(this.resultSet.next()){
+            Motorista motoristaAux = new Motorista(this.resultSet.getString("codMotorista"));
+            motoristaAux.setNome(this.resultSet.getString("nome"));
+            motoristaAux.setCaminhao(this.resultSet.getString("caminhao"));
+            motoristaAux.setEquipeColeta(this.resultSet.getBoolean("equipeColeta"));
+            motoristas.add(motoristaAux);
+        }
+        close();
+        return motoristas;
+    }
 }

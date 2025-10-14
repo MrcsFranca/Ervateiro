@@ -28,7 +28,39 @@ public class FuncionarioDAOJDBC implements FuncionarioDAO {
         this.preparedStatement.executeUpdate();
         close();
     }
-    public void atualizarFuncionario(Funcionario funcionario){}
-    public void removerFuncionario(Funcionario funcionario){}
-    public ArrayList<Funcionario> listarTodosFuncionario(){}
+    public void atualizarFuncionario(Funcionario funcionario) throws SQLException {
+        open();
+        this.sql = "UPDATE Funcionario SET nome = ?, numCT = ?, celular = ? WHERE cpf = ?";
+        this.preparedStatement = this.connection.prepareStatement(sql);
+        this.preparedStatement.setString(1, funcionario.getNome());
+        this.preparedStatement.setString(2, funcionario.getNumCt());
+        this.preparedStatement.setString(3, funcionario.getCelular());
+        this.preparedStatement.setString(4, funcionario.getCpf());
+        this.preparedStatement.executeUpdate();
+        close();
+    }
+    public void removerFuncionario(Funcionario funcionario) throws SQLException {
+        open();
+        this.sql = "DELETE FROM funcionario WHERE cpf = ?";
+        this.preparedStatement = this.connection.prepareStatement(sql);
+        this.preparedStatement.setString(1, funcionario.getCpf());
+        this.preparedStatement.executeUpdate();
+        close();
+    }
+    public ArrayList<Funcionario> listarTodosFuncionario() throws SQLException {
+        ArrayList<Funcionario> funcionarios = new ArrayList<>();
+        open();
+        this.sql = "SELECT * FROM funcionario";
+        this.preparedStatement = this.connection.prepareStatement(this.sql);
+        this.resultSet = this.preparedStatement.executeQuery();
+        while (this.resultSet.next()) {
+            Funcionario funcionarioAux = new Funcionario(this.resultSet.getString("cpf"));
+            funcionarioAux.setNome(this.resultSet.getString("nome"));
+            funcionarioAux.setNumCt(this.resultSet.getString("numCT"));
+            funcionarioAux.setCelular(this.resultSet.getString("celular"));
+            funcionarios.add(funcionarioAux);
+        }
+        close();
+        return funcionarios;
+    }
 }

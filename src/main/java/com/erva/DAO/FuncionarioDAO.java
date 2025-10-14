@@ -5,7 +5,7 @@ import java.util.ArrayList;
 import com.erva.model.Funcionario;
 public interface FuncionarioDAO {
     public void inserirFuncionario(Funcionario funcionario) throws SQLException;
-    public void atualizarFuncionario(Funcionario funcionario);
-    public void removerFuncionario(Funcionario funcionario);
-    public ArrayList<Funcionario> listarTodosFuncionario();
+    public void atualizarFuncionario(Funcionario funcionario) throws SQLException;
+    public void removerFuncionario(Funcionario funcionario) throws SQLException;
+    public ArrayList<Funcionario> listarTodosFuncionario() throws SQLException;
 }
