@@ -1,5 +1,7 @@
 package com.erva.DAO;
 import com.erva.model.Fornecedor;
+import com.erva.model.Funcionario;
+
 import java.util.ArrayList;
 import java.sql.*;
 
@@ -71,5 +73,21 @@ public class FornecedorDAOJDBC implements FornecedorDAO {
         }
         close();
         return fornecedores;
+    }
+
+    public Fornecedor buscaFornecedor(Fornecedor fornecedor) throws SQLException {
+        open();
+        this.sql = "SELECT * FROM Fornecedor WHERE fornecedorId = ?";
+        this.preparedStatement = this.connection.prepareStatement(sql);
+        this.preparedStatement.setInt(1, fornecedor.getFornecedorId());
+        this.resultSet = this.preparedStatement.executeQuery();
+        Fornecedor fornecedorAux = new Fornecedor(this.resultSet.getInt("fornecedorId"));
+        fornecedorAux.setCnpj(this.resultSet.getString("cnpj"));
+        fornecedorAux.setEndereco(this.resultSet.getString("endereco"));
+        fornecedorAux.setCpf(this.resultSet.getString("cpf"));
+        fornecedorAux.setNome(this.resultSet.getString("nome"));
+        fornecedorAux.setFornecedorFisico(this.resultSet.getBoolean("fisico"));
+        close();
+        return fornecedorAux;
     }
 }

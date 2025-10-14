@@ -1,5 +1,6 @@
 package com.erva.DAO;
 
+import com.erva.model.Funcionario;
 import com.erva.model.Motorista;
 
 import java.sql.Connection;
@@ -68,5 +69,19 @@ public class MotoristaDAOJDBC {
         }
         close();
         return motoristas;
+    }
+
+    public Motorista buscaMotorista(Motorista motorista) throws SQLException {
+        open();
+        this.sql = "SELECT * FROM Motorista WHERE codMotorista = ?";
+        this.preparedStatement = this.connection.prepareStatement(sql);
+        this.preparedStatement.setString(1, motorista.getCodMotorista());
+        this.resultSet = this.preparedStatement.executeQuery();
+        Motorista motoristaAux = new Motorista(this.resultSet.getString("codMotorista"));
+        motoristaAux.setNome(this.resultSet.getString("nome"));
+        motoristaAux.setCaminhao(this.resultSet.getString("caminhao"));
+        motoristaAux.setEquipeColeta(this.resultSet.getBoolean("equipeColeta"));
+        close();
+        return motoristaAux;
     }
 }

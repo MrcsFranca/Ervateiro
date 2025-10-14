@@ -1,5 +1,7 @@
 package com.erva.DAO;
 import com.erva.model.Funcionario;
+import com.erva.model.Motorista;
+
 import java.util.ArrayList;
 import java.sql.*;
 public class FuncionarioDAOJDBC implements FuncionarioDAO {
@@ -62,5 +64,19 @@ public class FuncionarioDAOJDBC implements FuncionarioDAO {
         }
         close();
         return funcionarios;
+    }
+
+    public Funcionario buscaFuncionario(Funcionario funcionario) throws SQLException {
+        open();
+        this.sql = "SELECT * FROM Funcionario WHERE cpf = ?";
+        this.preparedStatement = this.connection.prepareStatement(sql);
+        this.preparedStatement.setString(1, funcionario.getCpf());
+        this.resultSet = this.preparedStatement.executeQuery();
+        Funcionario funcionarioAux = new Funcionario(this.resultSet.getString("cpf"));
+        funcionarioAux.setNome(this.resultSet.getString("nome"));
+        funcionarioAux.setNumCt(this.resultSet.getString("numCT"));
+        funcionarioAux.setCelular(this.resultSet.getString("celular"));
+        close();
+        return funcionarioAux;
     }
 }
