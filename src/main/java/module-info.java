@@ -4,8 +4,15 @@ module com.erva.ervateiro {
 
     requires org.controlsfx.controls;
     requires org.kordamp.bootstrapfx.core;
+
     requires java.sql;
 
-    opens com.erva.ervateiro to javafx.fxml;
-    exports com.erva.ervateiro;
+
+    opens com.erva.main to javafx.fxml;
+    opens com.erva.DAO to javafx.fxml;
+    opens com.erva.model to javafx.fxml;
+
+    exports com.erva.main;
+    exports com.erva.DAO;
+    exports com.erva.model;
 }
