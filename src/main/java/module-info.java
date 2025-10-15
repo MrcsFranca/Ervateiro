@@ -6,6 +6,7 @@ module com.erva.ervateiro {
     requires org.kordamp.bootstrapfx.core;
 
     requires java.sql;
+    requires java.desktop;
 
 
     opens com.erva.main to javafx.fxml;
