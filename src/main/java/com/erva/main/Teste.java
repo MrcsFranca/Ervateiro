@@ -1,18 +1,22 @@
 package com.erva.main;
-import com.erva.DAO.EntregaDAOJDBC;
-import com.erva.model.Entrega;
 
-import java.sql.SQLException;
-import java.sql.Timestamp;
-import java.util.ArrayList;
+import javafx.application.Application;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Scene;
+import javafx.stage.Stage;
 
-public class Teste {
-    public static void main(String[] args) throws SQLException {
-        EntregaDAOJDBC entregaDAOJDBC = new EntregaDAOJDBC();
-        ArrayList<Entrega> entregas;
-        entregas = entregaDAOJDBC.buscarEntregas(null, null, Timestamp.valueOf("2025-10-05 08:00:00"), Timestamp.valueOf("2025-10-05 08:00:00"), 2201.0, null, null);
-        for (Entrega entrega : entregas) {
-            System.out.println(entrega);
-        }
+public class Teste extends Application {
+
+    @Override
+    public void start(Stage primaryStage) throws Exception {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/erva/ervateiro/TabelaEntregas.fxml"));
+        Scene scene = new Scene(loader.load());
+        primaryStage.setTitle("Tabela de Entregas");
+        primaryStage.setScene(scene);
+        primaryStage.show();
+    }
+
+    public static void main(String[] args) {
+        launch(args);
     }
 }
