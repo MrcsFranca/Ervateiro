@@ -26,9 +26,9 @@ public class EntregaDAOJDBC implements EntregaDAO {
 
     public void insereEntrega(Entrega entrega) throws SQLException{
         open();
-        this.sql = "INSERT INTO entrega (entregaId, codMotorista, fornecedorId, cpf, dataHora, tipoErva, peso, descricao) VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
+        this.sql = "INSERT INTO entrega (codMotorista, fornecedorId, cpf, dataHora, tipoErva, peso, descricao) VALUES (?, ?, ?, ?, ?, ?, ?) RETURNING entregaId";
         this.preparedStatement = this.connection.prepareStatement(sql);
-        this.preparedStatement.setInt(1, entrega.getEntregaId());
+        //this.preparedStatement.setInt(1, entrega.getEntregaId());
         this.preparedStatement.setString(2, entrega.getMotorista().getCodMotorista());
         this.preparedStatement.setInt(3, entrega.getFornecedor().getFornecedorId());
         this.preparedStatement.setString(4, entrega.getFuncionario().getCpf());
@@ -36,7 +36,10 @@ public class EntregaDAOJDBC implements EntregaDAO {
         this.preparedStatement.setString(6, entrega.getTipoErva());
         this.preparedStatement.setDouble(7, entrega.getPeso());
         this.preparedStatement.setString(8, entrega.getDescricao());
-        this.preparedStatement.executeUpdate();
+        ResultSet rs = preparedStatement.executeQuery();
+        if (rs.next()) {
+            entrega.setEntregaId(rs.getInt("entregaId")); // atualiza o objeto com o ID gerado
+        }
         close();
     }
     public void atualizaEntrega(Entrega entrega) throws SQLException{

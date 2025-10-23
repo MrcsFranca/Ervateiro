@@ -60,6 +60,7 @@ public class Fornecedor {
         return fornecedorFisico;
     }
 
+    /*
     @Override
     public String toString() {
         return "Fornecedor{" +
@@ -70,5 +71,11 @@ public class Fornecedor {
                 ", cnpj='" + cnpj + '\'' +
                 ", endereco='" + endereco + '\'' +
                 '}';
+    }
+     */
+
+    @Override
+    public String toString() {
+        return this.nome;
     }
 }

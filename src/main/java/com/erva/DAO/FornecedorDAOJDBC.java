@@ -68,7 +68,7 @@ public class FornecedorDAOJDBC implements FornecedorDAO {
             fornecedorAux.setEndereco(this.resultSet.getString("endereco"));
             fornecedorAux.setCpf(this.resultSet.getString("cpf"));
             fornecedorAux.setNome(this.resultSet.getString("nome"));
-            fornecedorAux.setFornecedorFisico(this.resultSet.getBoolean("fisico"));
+            fornecedorAux.setFornecedorFisico(this.resultSet.getBoolean("fornecedorFisico"));
             fornecedores.add(fornecedorAux);
         }
         close();

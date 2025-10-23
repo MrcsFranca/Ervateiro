@@ -64,7 +64,7 @@ public class MotoristaDAOJDBC {
             Motorista motoristaAux = new Motorista(this.resultSet.getString("codMotorista"));
             motoristaAux.setNome(this.resultSet.getString("nome"));
             motoristaAux.setCaminhao(this.resultSet.getString("caminhao"));
-            motoristaAux.setEquipeColeta(this.resultSet.getBoolean("equipeColeta"));
+            motoristaAux.setEquipeColeta(this.resultSet.getBoolean("equipe"));
             motoristas.add(motoristaAux);
         }
         close();
