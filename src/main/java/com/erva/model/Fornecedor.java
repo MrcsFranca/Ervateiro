@@ -36,6 +36,8 @@ public class Fornecedor {
         this.fornecedorId = fornecedorId;
     }
 
+    public Fornecedor() {}
+
     public int getFornecedorId() {
         return fornecedorId;
     }
