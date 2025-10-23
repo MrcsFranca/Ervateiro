@@ -15,7 +15,7 @@ public class AcessarRegistroController {
     private Button btnMostrarRegistro;
 
     @FXML
-    public void mostrarRegistro(ActionEvent event) throws SQLException {
+    public void mostrarRegistro(javafx.event.ActionEvent actionEvent) throws SQLException {
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/erva/ervateiro/TabelaEntregas.fxml"));
             Parent telaRegistros = loader.load();
@@ -28,5 +28,4 @@ public class AcessarRegistroController {
             e.printStackTrace();
         }
     }
-
 }
