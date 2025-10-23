@@ -64,9 +64,11 @@ public class Entrega {
         return tipoErva;
     }
 
+    /*
     public Timestamp getDataHora() {
         return dataHora;
     }
+     */
 
     public String getDescricao() {
         return descricao;
