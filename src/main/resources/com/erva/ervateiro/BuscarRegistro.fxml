@@ -23,11 +23,11 @@
                                 </ImageView>
                             </graphic>
                         </Button>
-                        <Button layoutX="218.0" layoutY="17.0" mnemonicParsing="false" prefHeight="65.0" prefWidth="104.0" style="-fx-background-color: #556a2f;" text="ENTREGAS" textFill="WHITE" textOverrun="CLIP">
+                        <Button fx:id="btnEntregas" layoutX="218.0" layoutY="17.0" mnemonicParsing="false" onAction="#acessarEntregas" prefHeight="65.0" prefWidth="104.0" style="-fx-background-color: #556a2f;" text="ENTREGAS" textFill="WHITE" textOverrun="CLIP">
                             <font>
                                 <Font name="Dubai Regular" size="14.0" />
                             </font></Button>
-                        <Button layoutX="359.0" layoutY="16.0" mnemonicParsing="false" prefHeight="66.0" prefWidth="104.0" style="-fx-background-color: #556a2f;" text="CADASTROS" textFill="WHITE">
+                        <Button fx:id="btnCadastros" layoutX="359.0" layoutY="16.0" mnemonicParsing="false" onAction="#acessarCadastros" prefHeight="66.0" prefWidth="114.0" style="-fx-background-color: #556a2f;" text="CADASTROS" textFill="WHITE">
                             <font>
                                 <Font name="Dubai Regular" size="14.0" />
                             </font>
@@ -36,24 +36,30 @@
                 </AnchorPane>
                 <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="100.0" prefWidth="160.0" style="-fx-background-color: ##2E4D2E;">
                <children>
-                  <SplitPane dividerPositions="0.34078590785907853" layoutX="8.0" layoutY="44.0" prefHeight="254.0" prefWidth="589.0">
+                  <SplitPane dividerPositions="0.34071550255536626, 0.6797274275979557" layoutX="8.0" layoutY="44.0" prefHeight="254.0" prefWidth="589.0">
                     <items>
                       <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0">
                            <children>
-                              <Label layoutX="14.0" layoutY="5.0" text="Pesquisar" />
-                              <TextField layoutX="14.0" layoutY="29.0" prefHeight="28.0" prefWidth="158.0" />
+                              <Label layoutX="14.0" layoutY="5.0" prefHeight="16.0" prefWidth="151.0" text="Pesquisar Motorista" />
+                              <TextField fx:id="PesquisarMotoristaTextField" layoutX="14.0" layoutY="29.0" onAction="#PesquisarMotorista" prefHeight="28.0" prefWidth="158.0" />
+                              <Label layoutX="14.0" layoutY="73.0" prefHeight="16.0" prefWidth="158.0" text="Pesquisar Fornecedor" />
+                              <TextField fx:id="PesquisarFornecedorTextField" layoutX="13.0" layoutY="102.0" onAction="#PesquisarFornecedor" prefHeight="28.0" prefWidth="158.0" />
                            </children>
                         </AnchorPane>
                       <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0">
                            <children>
-                              <Label layoutX="27.0" layoutY="5.0" text="Filtros" />
-                              <CheckBox layoutX="24.0" layoutY="30.0" mnemonicParsing="false" text="Tipo de erva" />
-                              <CheckBox layoutX="24.0" layoutY="56.0" mnemonicParsing="false" text="Motorista" />
-                              <CheckBox layoutX="24.0" layoutY="83.0" mnemonicParsing="false" text="Data" />
-                              <CheckBox layoutX="24.0" layoutY="108.0" mnemonicParsing="false" text="Fornecedor" />
-                              <CheckBox layoutX="24.0" layoutY="134.0" mnemonicParsing="false" text="Hora" />
+                              <Label layoutX="27.0" layoutY="5.0" prefHeight="16.0" prefWidth="167.0" text="Filtrar por tipo de erva" />
+                              <RadioButton fx:id="NativaRadioBtn" layoutX="27.0" layoutY="38.0" mnemonicParsing="false" onAction="#FiltrarNativa" text="Erva Nativa" />
+                              <RadioButton fx:id="CultivadaRadioBtn" layoutX="27.0" layoutY="67.0" mnemonicParsing="false" onAction="#FiltrarCultivada" text="Erva Cultivada" />
+                              <RadioButton fx:id="MistaRadioBtn" layoutX="27.0" layoutY="97.0" mnemonicParsing="false" onAction="#FiltrarMista" text="Erva Mista" />
+                              <Button fx:id="btnBuscar" layoutX="13.0" layoutY="184.0" mnemonicParsing="false" onAction="#RealizarBusca" prefHeight="38.0" prefWidth="167.0" style="-fx-background-color: #556a2f;" text="BUSCAR" textFill="WHITE" />
                            </children>
                         </AnchorPane>
+                        <AnchorPane prefHeight="252.0" prefWidth="141.0">
+                           <children>
+                              <Label layoutX="43.0" layoutY="6.0" text="Filtrar por Data" />
+                              <DatePicker fx:id="FiltroDatePicker" layoutX="23.0" layoutY="49.0" onAction="#FiltrarData" prefHeight="38.0" prefWidth="139.0" />
+                           </children></AnchorPane>
                     </items>
                   </SplitPane>
                   <Label layoutX="34.0" layoutY="3.0" prefHeight="21.0" prefWidth="104.0" text="Buscar Registro" />
