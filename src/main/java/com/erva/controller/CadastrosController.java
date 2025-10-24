@@ -75,7 +75,7 @@ public class CadastrosController {
     @FXML
     void CadastrarFuncionario(javafx.event.ActionEvent actionEvent) throws SQLException {
         try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/erva/ervateiro/CadastrarFuncionario.fxml"));
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/erva/ervateiro/cadastrarFuncionario.fxml"));
             Parent telaRegistros = loader.load();
 
             Stage stage = new Stage();
