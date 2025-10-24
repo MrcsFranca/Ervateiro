@@ -68,6 +68,7 @@ public class Entrega {
         return dataHora;
     }
 
+
     public String getDescricao() {
         return descricao;
     }

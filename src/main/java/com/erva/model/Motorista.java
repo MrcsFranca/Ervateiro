@@ -42,6 +42,7 @@ public class Motorista {
         return equipeColeta;
     }
 
+    /*
     @Override
     public String toString() {
         return "Motorista{" +
@@ -50,5 +51,11 @@ public class Motorista {
                 ", caminhao='" + caminhao + '\'' +
                 ", equipeColeta=" + equipeColeta +
                 '}';
+    }
+     */
+
+    @Override
+    public String toString() {
+        return this.nome;
     }
 }

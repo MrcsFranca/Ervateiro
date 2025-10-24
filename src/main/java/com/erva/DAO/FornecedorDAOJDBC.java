@@ -68,7 +68,7 @@ public class FornecedorDAOJDBC implements FornecedorDAO {
             fornecedorAux.setEndereco(this.resultSet.getString("endereco"));
             fornecedorAux.setCpf(this.resultSet.getString("cpf"));
             fornecedorAux.setNome(this.resultSet.getString("nome"));
-            fornecedorAux.setFornecedorFisico(this.resultSet.getBoolean("fisico"));
+            fornecedorAux.setFornecedorFisico(this.resultSet.getBoolean("fornecedorFisico"));
             fornecedores.add(fornecedorAux);
         }
         close();
@@ -81,12 +81,15 @@ public class FornecedorDAOJDBC implements FornecedorDAO {
         this.preparedStatement = this.connection.prepareStatement(sql);
         this.preparedStatement.setInt(1, fornecedor.getFornecedorId());
         this.resultSet = this.preparedStatement.executeQuery();
-        Fornecedor fornecedorAux = new Fornecedor(this.resultSet.getInt("fornecedorId"));
-        fornecedorAux.setCnpj(this.resultSet.getString("cnpj"));
-        fornecedorAux.setEndereco(this.resultSet.getString("endereco"));
-        fornecedorAux.setCpf(this.resultSet.getString("cpf"));
-        fornecedorAux.setNome(this.resultSet.getString("nome"));
-        fornecedorAux.setFornecedorFisico(this.resultSet.getBoolean("fisico"));
+        Fornecedor  fornecedorAux = null;
+        if (this.resultSet.next()) {
+            fornecedorAux = new Fornecedor(this.resultSet.getInt("fornecedorId"));
+            fornecedorAux.setCnpj(this.resultSet.getString("cnpj"));
+            fornecedorAux.setEndereco(this.resultSet.getString("endereco"));
+            fornecedorAux.setCpf(this.resultSet.getString("cpf"));
+            fornecedorAux.setNome(this.resultSet.getString("nome"));
+            fornecedorAux.setFornecedorFisico(this.resultSet.getBoolean("fornecedorFisico"));
+        }
         close();
         return fornecedorAux;
     }

@@ -64,7 +64,7 @@ public class MotoristaDAOJDBC {
             Motorista motoristaAux = new Motorista(this.resultSet.getString("codMotorista"));
             motoristaAux.setNome(this.resultSet.getString("nome"));
             motoristaAux.setCaminhao(this.resultSet.getString("caminhao"));
-            motoristaAux.setEquipeColeta(this.resultSet.getBoolean("equipeColeta"));
+            motoristaAux.setEquipeColeta(this.resultSet.getBoolean("equipe"));
             motoristas.add(motoristaAux);
         }
         close();
@@ -77,10 +77,13 @@ public class MotoristaDAOJDBC {
         this.preparedStatement = this.connection.prepareStatement(sql);
         this.preparedStatement.setString(1, motorista.getCodMotorista());
         this.resultSet = this.preparedStatement.executeQuery();
-        Motorista motoristaAux = new Motorista(this.resultSet.getString("codMotorista"));
-        motoristaAux.setNome(this.resultSet.getString("nome"));
-        motoristaAux.setCaminhao(this.resultSet.getString("caminhao"));
-        motoristaAux.setEquipeColeta(this.resultSet.getBoolean("equipeColeta"));
+        Motorista motoristaAux = null;
+        if(this.resultSet.next()) {
+            motoristaAux = new Motorista(this.resultSet.getString("codMotorista"));
+            motoristaAux.setNome(this.resultSet.getString("nome"));
+            motoristaAux.setCaminhao(this.resultSet.getString("caminhao"));
+            motoristaAux.setEquipeColeta(this.resultSet.getBoolean("equipe"));
+        }
         close();
         return motoristaAux;
     }

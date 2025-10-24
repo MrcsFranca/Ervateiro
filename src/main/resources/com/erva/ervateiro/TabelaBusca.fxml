@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane prefHeight="539.0" prefWidth="991.0" xmlns="http://javafx.com/javafx/24.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.erva.controller.TabelaBuscaController">
+
+    <TableView fx:id="tabelaEntregas" layoutX="22.0" layoutY="40.0" prefHeight="460.0" prefWidth="947.0">
+        <columns>
+            <TableColumn fx:id="colId" prefWidth="65.0" text="ID" />
+            <TableColumn fx:id="colPeso" prefWidth="98.0" text="Peso" />
+            <TableColumn fx:id="colTipoErva" prefWidth="130.0" text="Tipo erva" />
+            <TableColumn fx:id="colDataHora" prefWidth="133.0" text="Data e hora" />
+            <TableColumn fx:id="colMotorista" prefWidth="133.0" text="Motorista" />
+            <TableColumn fx:id="colFornecedor" prefWidth="133.0" text="Fornecedor" />
+            <TableColumn fx:id="colFuncionario" prefWidth="133.0" text="Funcionario" />
+            <TableColumn fx:id="colDesc" prefWidth="123.0" text="Descrição" />
+        </columns>
+    </TableView>
+</AnchorPane>

@@ -72,10 +72,13 @@ public class FuncionarioDAOJDBC implements FuncionarioDAO {
         this.preparedStatement = this.connection.prepareStatement(sql);
         this.preparedStatement.setString(1, funcionario.getCpf());
         this.resultSet = this.preparedStatement.executeQuery();
-        Funcionario funcionarioAux = new Funcionario(this.resultSet.getString("cpf"));
-        funcionarioAux.setNome(this.resultSet.getString("nome"));
-        funcionarioAux.setNumCt(this.resultSet.getString("numCT"));
-        funcionarioAux.setCelular(this.resultSet.getString("celular"));
+        Funcionario funcionarioAux = null;
+        if (resultSet.next()) {
+            funcionarioAux = new Funcionario(this.resultSet.getString("cpf"));
+            funcionarioAux.setNome(this.resultSet.getString("nome"));
+            funcionarioAux.setNumCt(this.resultSet.getString("numCT"));
+            funcionarioAux.setCelular(this.resultSet.getString("celular"));
+        }
         close();
         return funcionarioAux;
     }

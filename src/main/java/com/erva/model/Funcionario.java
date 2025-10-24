@@ -41,6 +41,8 @@ public class Funcionario {
         return celular;
     }
 
+    /*
+
     @Override
     public String toString() {
         return "Funcionario{" +
@@ -49,5 +51,11 @@ public class Funcionario {
                 ", numCt='" + numCt + '\'' +
                 ", celular='" + celular + '\'' +
                 '}';
+    }
+     */
+
+    @Override
+    public String toString() {
+        return this.nome;
     }
 }
