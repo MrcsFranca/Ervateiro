@@ -8,6 +8,7 @@ module com.erva.ervateiro {
     requires java.sql;
     requires java.desktop;
     requires javafx.graphics;
+    requires javafx.base;
 
     opens com.erva.main to javafx.fxml;
     opens com.erva.DAO to javafx.fxml;
