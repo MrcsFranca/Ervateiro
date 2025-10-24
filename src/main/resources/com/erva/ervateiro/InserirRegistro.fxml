@@ -35,18 +35,18 @@
                                 </ImageView>
                             </graphic>
                         </Button>
-                        <Button layoutX="218.0" layoutY="17.0" mnemonicParsing="false" prefHeight="65.0" prefWidth="104.0" style="-fx-background-color: #556a2f;" text="ENTREGAS" textFill="WHITE" textOverrun="CLIP">
+                        <Button layoutX="218.0" layoutY="17.0" mnemonicParsing="false" onAction="#acessarEntregas" prefHeight="65.0" prefWidth="104.0" style="-fx-background-color: #556a2f;" text="ENTREGAS" textFill="WHITE" textOverrun="CLIP">
                             <font>
                                 <Font name="Dubai Regular" size="14.0" />
                             </font></Button>
-                        <Button layoutX="359.0" layoutY="16.0" mnemonicParsing="false" prefHeight="66.0" prefWidth="110.0" style="-fx-background-color: #556a2f;" text="CADASTROS" textFill="WHITE">
+                        <Button layoutX="359.0" layoutY="16.0" mnemonicParsing="false" onAction="#acessarCadastros" prefHeight="66.0" prefWidth="110.0" style="-fx-background-color: #556a2f;" text="CADASTROS" textFill="WHITE">
                             <font>
                                 <Font name="Dubai Regular" size="14.0" />
                             </font>
                         </Button>
                     </children>
                 </AnchorPane>
-                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="100.0" prefWidth="160.0" style="-fx-background-color: #2E4D2E;">
+                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="100.0" prefWidth="160.0">
                <children>
                   <GridPane layoutX="24.0" layoutY="52.0" prefHeight="221.0" prefWidth="550.0">
                     <columnConstraints>
@@ -167,6 +167,8 @@
                         <Font size="15.0" />
                      </font>
                   </Label>
+                  <Label layoutX="455.0" layoutY="13.0" text="Entregas realizadas" />
+                  <Label fx:id="countLbl" layoutX="437.0" layoutY="13.0" text="0" />
                </children></AnchorPane>
             </items>
         </SplitPane>

@@ -10,12 +10,13 @@ import com.erva.model.Funcionario;
 import com.erva.model.Motorista;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.scene.control.Button;
-import javafx.scene.control.ComboBox;
-import javafx.scene.control.RadioButton;
-import javafx.scene.control.TextArea;
-import javafx.scene.control.TextField;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
+import javafx.scene.control.*;
+import javafx.stage.Stage;
 
+import java.io.IOException;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
@@ -45,16 +46,52 @@ public class InserirRegistroController{
 
     @FXML
     private TextField textFieldPeso;
-
+    @FXML
+    private Label countLbl;
     @FXML
     private ComboBox<Funcionario> comboBoxFuncionario;
-
+    private int totalEntregas;
+    @FXML
     public void initialize() {
+        EntregaDAOJDBC entregaDAOJDBC = new EntregaDAOJDBC();
         try {
             mostrarFuncionarios();
             mostrarFornecedor();
             mostrarMotorista();
+            totalEntregas = entregaDAOJDBC.contarTotalEntregas();
+            countLbl.setText(""+totalEntregas);
+
         } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+
+    @FXML
+    public void acessarCadastros(javafx.event.ActionEvent actionEvent) throws SQLException {
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/erva/ervateiro/Cadastros.fxml"));
+            Parent telaRegistros = loader.load();
+
+            Stage stage = new Stage();
+            stage.setTitle("Cadastros");
+            stage.setScene(new Scene(telaRegistros));
+            stage.show();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    @FXML
+    void acessarEntregas(javafx.event.ActionEvent actionEvent) throws SQLException {
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/erva/ervateiro/Entregas.fxml"));
+            Parent telaRegistros = loader.load();
+
+            Stage stage = new Stage();
+            stage.setTitle("Entregas");
+            stage.setScene(new Scene(telaRegistros));
+            stage.show();
+        } catch (IOException e) {
             e.printStackTrace();
         }
     }
@@ -110,7 +147,8 @@ public class InserirRegistroController{
             entregaAux.setTipoErva("misturada");
         }
         entregaDAO.insereEntrega(entregaAux);
+        //int contagem = Integer.parseInt(countLbl.getText());
+        countLbl.setText(String.valueOf(entregaDAO.contarTotalEntregas()));
     }
-
 
 }

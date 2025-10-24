@@ -36,6 +36,7 @@ public class TabelaBuscaController {
         tabelaEntregas.setItems(lista);
 
     }
+    @FXML
     void initialize() throws Exception {
         FuncionarioDAOJDBC funcionarioDAO = new FuncionarioDAOJDBC();
         MotoristaDAOJDBC motoristaDAO = new MotoristaDAOJDBC();

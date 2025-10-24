@@ -1,9 +1,13 @@
 package com.erva.DAO;
 
+import com.erva.controller.InserirRegistroController;
+import com.erva.controller.MenuController;
 import com.erva.model.Entrega;
 import com.erva.model.Fornecedor;
 import com.erva.model.Funcionario;
 import com.erva.model.Motorista;
+import javafx.fxml.FXML;
+import javafx.scene.control.Label;
 
 import java.util.ArrayList;
 import java.sql.*;
@@ -35,11 +39,14 @@ public class EntregaDAOJDBC implements EntregaDAO {
         this.preparedStatement.setString(4, entrega.getTipoErva());
         this.preparedStatement.setDouble(5, entrega.getPeso());
         this.preparedStatement.setString(6, entrega.getDescricao());
-        preparedStatement.executeUpdate();
+        //preparedStatement.executeUpdate();
         ResultSet rs = preparedStatement.executeQuery(); // usar executeQuery() porque tem RETURNING
         if (rs.next()) {
             entrega.setEntregaId(rs.getInt("entregaId")); // atualiza o objeto com o ID gerado
         }
+
+        int total = this.contarTotalEntregas();
+        MenuController mn = new MenuController();
         close();
     }
     public void atualizaEntrega(Entrega entrega) throws SQLException{
@@ -162,6 +169,22 @@ public class EntregaDAOJDBC implements EntregaDAO {
 
         close();
         return entregas;
+    }
+
+    public int contarTotalEntregas() throws SQLException {
+        open();
+        this.sql = "SELECT COUNT(*) FROM entrega";
+
+        try (PreparedStatement stmt = this.connection.prepareStatement(this.sql);
+             ResultSet rs = stmt.executeQuery()) {
+
+            if (rs.next()) {
+                return rs.getInt(1);
+            }
+        } finally {
+            close();
+        }
+        return 0;
     }
 
 }

@@ -5,6 +5,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.stage.Stage;
 
 import java.io.IOException;
@@ -17,6 +18,9 @@ public class MenuController {
 
     @FXML
     private Button btnEntregas;
+
+    @FXML
+    private Label lblCount;
 
     @FXML
     public void acessarCadastros(javafx.event.ActionEvent actionEvent) throws SQLException {
@@ -46,6 +50,11 @@ public class MenuController {
         } catch (IOException e) {
             e.printStackTrace();
         }
+    }
+
+    @FXML
+    void adicionar(int total) throws SQLException {
+        lblCount.setText(String.valueOf(total));
     }
 
 }

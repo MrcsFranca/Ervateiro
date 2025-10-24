@@ -46,63 +46,39 @@ public class BuscarRegistroController {
     private TextField PesquisarMotoristaTextField;
 
     @FXML
-    private Button btnBuscar;
-
-    @FXML
-    private Button btnCadastros;
-
-    @FXML
-    private Button btnEntregas;
-
-    @FXML
     private TextField pesoMaxTextField;
 
     @FXML
     private TextField pesoMinTextField;
 
     @FXML
-    void FiltrarCultivada(ActionEvent event) {
+    public void acessarCadastros(javafx.event.ActionEvent actionEvent) throws SQLException {
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/erva/ervateiro/Cadastros.fxml"));
+            Parent telaRegistros = loader.load();
 
+            Stage stage = new Stage();
+            stage.setTitle("Cadastros");
+            stage.setScene(new Scene(telaRegistros));
+            stage.show();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
     @FXML
-    void FiltrarData(ActionEvent event) {
+    void acessarEntregas(javafx.event.ActionEvent actionEvent) throws SQLException {
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/erva/ervateiro/Entregas.fxml"));
+            Parent telaRegistros = loader.load();
 
-    }
-
-    @FXML
-    void FiltrarMista(ActionEvent event) {
-
-    }
-
-    @FXML
-    void FiltrarNativa(ActionEvent event) {
-
-    }
-
-    @FXML
-    void PesquisarFornecedor(ActionEvent event) {
-
-    }
-
-    @FXML
-    void PesquisarMotorista(ActionEvent event) {
-
-    }
-
-    @FXML
-    void RealizarBusca(ActionEvent event) {
-
-    }
-
-    @FXML
-    void acessarCadastros(ActionEvent event) {
-
-    }
-
-    @FXML
-    void acessarEntregas(ActionEvent event) {
-
+            Stage stage = new Stage();
+            stage.setTitle("Entregas");
+            stage.setScene(new Scene(telaRegistros));
+            stage.show();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
 
