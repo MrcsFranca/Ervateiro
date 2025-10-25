@@ -30,5 +30,3 @@ Depois disso, basta apenas executar o jogo
 ```bash
   java main
 ```
-## 📝 License
-This project has the [MIT](https://choosealicense.com/licenses/mit/) license.
