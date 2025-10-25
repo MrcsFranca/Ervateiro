@@ -51,16 +51,17 @@ public class EntregaDAOJDBC implements EntregaDAO {
     }
     public void atualizaEntrega(Entrega entrega) throws SQLException{
         open();
-        this.sql = "UPDATE Entrega SET codMotorista = ?, fornecedorId = ?, cpf = ?, dataHora = ?, tipoErva = ?, peso = ?, descricao = ? WHERE entregaId = ?";
+        this.sql = "UPDATE Entrega SET codMotorista = ?, fornecedorId = ?, cpf = ?, tipoErva = ?, peso = ?, descricao = ? WHERE entregaId = ?";
         this.preparedStatement = this.connection.prepareStatement(sql);
         this.preparedStatement.setString(1, entrega.getMotorista().getCodMotorista());
         this.preparedStatement.setInt(2, entrega.getFornecedor().getFornecedorId());
         this.preparedStatement.setString(3, entrega.getFuncionario().getCpf());
-        this.preparedStatement.setTimestamp(4, entrega.getDataHora());
-        this.preparedStatement.setString(5, entrega.getTipoErva());
-        this.preparedStatement.setDouble(6, entrega.getPeso());
-        this.preparedStatement.setString(7, entrega.getDescricao());
-        this.preparedStatement.setInt(8, entrega.getEntregaId());
+        //this.preparedStatement.setTimestamp(4, entrega.getDataHora());
+        this.preparedStatement.setString(4, entrega.getTipoErva());
+        this.preparedStatement.setDouble(5, entrega.getPeso());
+        this.preparedStatement.setString(6, entrega.getDescricao());
+        this.preparedStatement.setInt(7, entrega.getEntregaId());
+        this.preparedStatement.executeUpdate();
         close();
     }
     public void removerEntrega(Entrega entrega) throws SQLException{
