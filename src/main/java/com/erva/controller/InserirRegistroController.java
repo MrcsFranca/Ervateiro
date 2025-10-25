@@ -149,6 +149,8 @@ public class InserirRegistroController{
         entregaDAO.insereEntrega(entregaAux);
         //int contagem = Integer.parseInt(countLbl.getText());
         countLbl.setText(String.valueOf(entregaDAO.contarTotalEntregas()));
+        new Alert(Alert.AlertType.CONFIRMATION, "Entrega registrada com sucesso.", ButtonType.OK).showAndWait();
+
     }
 
 }

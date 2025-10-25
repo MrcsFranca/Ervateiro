@@ -6,9 +6,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
-import javafx.scene.control.CheckBox;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.stage.Stage;
 
 import java.io.IOException;
@@ -80,7 +78,7 @@ public class CadastrarMotoristaController {
             motorista.setEquipeColeta(false);
         }
         motoristaDAO.inserirMotorista(motorista);
-
+        new Alert(Alert.AlertType.CONFIRMATION, "Motorista registrado com sucesso.", ButtonType.OK).showAndWait();
     }
 
 }

@@ -9,7 +9,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="405.0" prefWidth="565.0" xmlns="http://javafx.com/javafx/24.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.erva.controller.MenuController">
+<AnchorPane stylesheets="@style.css" prefHeight="405.0" prefWidth="565.0" xmlns="http://javafx.com/javafx/24.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.erva.controller.MenuController">
     <children>
         <SplitPane dividerPositions="0.2549407114624506" layoutX="-7.0" layoutY="-1.0" orientation="VERTICAL" prefHeight="406.0" prefWidth="600.0">
             <items>
