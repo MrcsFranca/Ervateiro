@@ -26,7 +26,42 @@ public class EntregasController {
 
     @FXML
     private Button btnInserirNovoRegistro;
+    @FXML
+    private Button btnRemoverRegistro;
+    @FXML
+    private Button btnAtualizarRegistro;
 
+
+    @FXML
+    void atualizarRegistro(ActionEvent event) {
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/erva/ervateiro/atualizarRegistro.fxml"));
+            Parent telaRegistros = loader.load();
+
+            Stage stage = new Stage();
+            stage.setTitle("Entregas");
+            stage.setScene(new Scene(telaRegistros));
+            stage.show();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    @FXML
+    void removerRegistro(ActionEvent event) {
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/erva/ervateiro/RemoverEntrega.fxml"));
+            Parent telaRegistros = loader.load();
+
+            Stage stage = new Stage();
+            stage.setTitle("Entregas");
+            stage.setScene(new Scene(telaRegistros));
+            stage.show();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+    }
     @FXML
     public void acessarCadastros(javafx.event.ActionEvent actionEvent) throws SQLException {
         try {

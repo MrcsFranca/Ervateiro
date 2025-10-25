@@ -2,6 +2,7 @@
 
 <?import javafx.scene.Cursor?>
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.SplitPane?>
 <?import javafx.scene.image.Image?>
@@ -9,7 +10,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane stylesheets="@style.css" prefHeight="405.0" prefWidth="565.0" xmlns="http://javafx.com/javafx/24.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.erva.controller.MenuController">
+<AnchorPane prefHeight="405.0" prefWidth="565.0" stylesheets="@style.css" xmlns="http://javafx.com/javafx/24.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.erva.controller.RemoverEntregaController">
     <children>
         <SplitPane dividerPositions="0.2549407114624506" layoutX="-7.0" layoutY="-1.0" orientation="VERTICAL" prefHeight="406.0" prefWidth="600.0">
             <items>
@@ -39,16 +40,19 @@
                     </children>
                 </AnchorPane>
                 <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="100.0" prefWidth="160.0">
-                    <children>
-                        <Label alignment="CENTER" layoutX="82.0" layoutY="51.0" prefHeight="195.0" prefWidth="444.0" text="SEJA BEM VINDO À TERRA DO MATE" textAlignment="CENTER" textOverrun="LEADING_WORD_ELLIPSIS">
-                            <font>
-                                <Font name="Dubai Medium" size="27.0" />
-                            </font>
-                        </Label>
-                    </children>
-               <cursor>
-                  <Cursor fx:constant="DEFAULT" />
-               </cursor></AnchorPane>
+                    <cursor>
+                        <Cursor fx:constant="DEFAULT" />
+                    </cursor>
+               <children>
+                  <ComboBox fx:id="comboBoxId" layoutX="247.0" layoutY="137.0" prefHeight="24.0" prefWidth="104.0" />
+                  <Label layoutX="242.0" layoutY="23.0" text="Remover Entrega" />
+                  <Label layoutX="202.0" layoutY="100.0" text="Id da entrega a ser removida:" />
+                  <Button fx:id="btnRemoverEntrega" layoutX="247.0" layoutY="190.0" mnemonicParsing="false" onAction="#removerEntrega" prefHeight="24.0" prefWidth="104.0" style="-fx-background-color: #556a2f;" text="REMOVER" textFill="WHITE" textOverrun="CLIP">
+                     <font>
+                        <Font name="Dubai Regular" size="14.0" />
+                     </font>
+                  </Button>
+               </children></AnchorPane>
             </items>
         </SplitPane>
     </children>

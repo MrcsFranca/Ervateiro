@@ -120,7 +120,6 @@ public class BuscarRegistroController {
         TabelaBuscaController controller = loader.getController();
         controller.carregarEntregas(entregas);
 
-        // mostrar a nova janela
         Stage stage = new Stage();
         stage.setTitle("Lista de Entregas");
         stage.setScene(new Scene(root));

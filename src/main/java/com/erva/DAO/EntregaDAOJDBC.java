@@ -51,16 +51,17 @@ public class EntregaDAOJDBC implements EntregaDAO {
     }
     public void atualizaEntrega(Entrega entrega) throws SQLException{
         open();
-        this.sql = "UPDATE Entrega SET codMotorista = ?, fornecedorId = ?, cpf = ?, dataHora = ?, tipoErva = ?, peso = ?, descricao = ? WHERE entregaId = ?";
+        this.sql = "UPDATE Entrega SET codMotorista = ?, fornecedorId = ?, cpf = ?, tipoErva = ?, peso = ?, descricao = ? WHERE entregaId = ?";
         this.preparedStatement = this.connection.prepareStatement(sql);
         this.preparedStatement.setString(1, entrega.getMotorista().getCodMotorista());
         this.preparedStatement.setInt(2, entrega.getFornecedor().getFornecedorId());
         this.preparedStatement.setString(3, entrega.getFuncionario().getCpf());
-        this.preparedStatement.setTimestamp(4, entrega.getDataHora());
-        this.preparedStatement.setString(5, entrega.getTipoErva());
-        this.preparedStatement.setDouble(6, entrega.getPeso());
-        this.preparedStatement.setString(7, entrega.getDescricao());
-        this.preparedStatement.setInt(8, entrega.getEntregaId());
+        //this.preparedStatement.setTimestamp(4, entrega.getDataHora());
+        this.preparedStatement.setString(4, entrega.getTipoErva());
+        this.preparedStatement.setDouble(5, entrega.getPeso());
+        this.preparedStatement.setString(6, entrega.getDescricao());
+        this.preparedStatement.setInt(7, entrega.getEntregaId());
+        this.preparedStatement.executeUpdate();
         close();
     }
     public void removerEntrega(Entrega entrega) throws SQLException{
@@ -74,7 +75,7 @@ public class EntregaDAOJDBC implements EntregaDAO {
     public ArrayList<Entrega> listaTodosEntregas() throws SQLException{
         ArrayList<Entrega> entregas = new ArrayList<>();
         open();
-        this.sql = "SELECT * FROM entrega";
+        this.sql = "SELECT * FROM entrega ORDER BY 1";
         this.preparedStatement = this.connection.prepareStatement(this.sql);
         this.resultSet = this.preparedStatement.executeQuery();
         while(this.resultSet.next()){
@@ -142,7 +143,7 @@ public class EntregaDAOJDBC implements EntregaDAO {
             sqlBuilder.append(" AND e.tipoErva ILIKE ?");
             params.add("%" + tipoErva + "%");
         }
-
+        sqlBuilder.append(" ORDER BY 1");
         this.preparedStatement = this.connection.prepareStatement(sqlBuilder.toString());
 
         for (int i = 0; i < params.size(); i++) {

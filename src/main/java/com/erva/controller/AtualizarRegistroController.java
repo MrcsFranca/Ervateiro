@@ -19,10 +19,8 @@ import javafx.stage.Stage;
 import java.io.IOException;
 import java.sql.SQLException;
 import java.util.ArrayList;
-import java.util.ResourceBundle;
 
-public class InserirRegistroController{
-
+public class AtualizarRegistroController {
     @FXML
     private Button btnEntrega;
 
@@ -46,11 +44,12 @@ public class InserirRegistroController{
 
     @FXML
     private TextField textFieldPeso;
+
     @FXML
-    private Label countLbl;
+    private ComboBox<Integer> comboBoxId;
+
     @FXML
     private ComboBox<Funcionario> comboBoxFuncionario;
-    private int totalEntregas;
     @FXML
     public void initialize() {
         EntregaDAOJDBC entregaDAOJDBC = new EntregaDAOJDBC();
@@ -58,8 +57,7 @@ public class InserirRegistroController{
             mostrarFuncionarios();
             mostrarFornecedor();
             mostrarMotorista();
-            totalEntregas = entregaDAOJDBC.contarTotalEntregas();
-            countLbl.setText(""+totalEntregas);
+            mostrarId();
 
         } catch (SQLException e) {
             e.printStackTrace();
@@ -96,15 +94,15 @@ public class InserirRegistroController{
         }
     }
 
-   @FXML
-   void mostrarFuncionarios() throws SQLException{
-       FuncionarioDAOJDBC funcionarioDAO = new FuncionarioDAOJDBC();
-       ArrayList<Funcionario> funcionarios = funcionarioDAO.listarTodosFuncionario();
-       comboBoxFuncionario.getItems().clear();
-       for(Funcionario funcionario : funcionarios){
-           comboBoxFuncionario.getItems().addAll(funcionario);
-       }
-   }
+    @FXML
+    void mostrarFuncionarios() throws SQLException{
+        FuncionarioDAOJDBC funcionarioDAO = new FuncionarioDAOJDBC();
+        ArrayList<Funcionario> funcionarios = funcionarioDAO.listarTodosFuncionario();
+        comboBoxFuncionario.getItems().clear();
+        for(Funcionario funcionario : funcionarios){
+            comboBoxFuncionario.getItems().addAll(funcionario);
+        }
+    }
 
     @FXML
     void mostrarMotorista() throws SQLException{
@@ -117,6 +115,17 @@ public class InserirRegistroController{
     }
 
     @FXML
+    void mostrarId() throws SQLException{
+        EntregaDAOJDBC entregaDAO = new EntregaDAOJDBC();
+        ArrayList<Entrega> entregas = entregaDAO.listaTodosEntregas();
+        comboBoxId.getItems().clear();
+        for(Entrega entrega : entregas){
+            comboBoxId.getItems().add(entrega.getEntregaId());
+        }
+    }
+
+
+    @FXML
     void mostrarFornecedor() throws SQLException{
         FornecedorDAOJDBC fornecedorDAO = new FornecedorDAOJDBC();
         ArrayList<Fornecedor> fornecedores = fornecedorDAO.listarTodosFornecedor();
@@ -127,9 +136,10 @@ public class InserirRegistroController{
     }
 
     @FXML
-    void cadastrarEntrega(ActionEvent event) throws SQLException {
+    void atualizarEntrega(ActionEvent event) throws SQLException {
         EntregaDAOJDBC entregaDAO = new EntregaDAOJDBC();
         Entrega entregaAux = new Entrega();
+        entregaAux.setEntregaId(comboBoxId.getValue());
         entregaAux.setDescricao(textFieldDescricao.getText());
         entregaAux.setPeso(Double.parseDouble(textFieldPeso.getText()));
         entregaAux.setFornecedor(comboBoxFornecedor.getValue());
@@ -146,10 +156,8 @@ public class InserirRegistroController{
         {
             entregaAux.setTipoErva("misturada");
         }
-        entregaDAO.insereEntrega(entregaAux);
-        //int contagem = Integer.parseInt(countLbl.getText());
-        countLbl.setText(String.valueOf(entregaDAO.contarTotalEntregas()));
-        new Alert(Alert.AlertType.CONFIRMATION, "Entrega registrada com sucesso.", ButtonType.OK).showAndWait();
+        entregaDAO.atualizaEntrega(entregaAux);
+        new Alert(Alert.AlertType.CONFIRMATION, "Entrega atualizada com sucesso.", ButtonType.OK).showAndWait();
 
     }
 

@@ -6,9 +6,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
-import javafx.scene.control.RadioButton;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.stage.Stage;
 
 import java.io.IOException;
@@ -86,7 +84,7 @@ public class CadastrarFornecedorController {
         fornecedor.setNome(textFieldNome.getText());
 
         fornecedorDAO.inserirFornecedor(fornecedor);
-
+        new Alert(Alert.AlertType.CONFIRMATION, "Fornecedor registrado com sucesso.", ButtonType.OK).showAndWait();
     }
 
 }

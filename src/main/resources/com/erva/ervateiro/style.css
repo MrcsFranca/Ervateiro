@@ -1,0 +1,22 @@
+.button {
+    -fx-background-color: #556a2f;
+    -fx-text-fill: white;
+    -fx-font-size: 14px;
+    -fx-font-family: "Dubai Regular";
+    -fx-cursor: hand;
+    -fx-border-radius: 8px;
+    -fx-background-radius: 8px;
+    -fx-transition: all 0.1s ease-in-out;
+}
+
+.button:hover {
+    -fx-background-color: #6a8b3f;
+    -fx-scale-x: 1.05;
+    -fx-scale-y: 1.05;
+}
+
+.button:pressed {
+    -fx-background-color: #445625;
+    -fx-scale-x: 0.95;
+    -fx-scale-y: 0.95;
+}

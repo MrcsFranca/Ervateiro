@@ -1,7 +1,7 @@
 package com.erva.controller;
-import com.erva.DAO.MotoristaDAOJDBC;
-import com.erva.model.Motorista;
-import javafx.event.ActionEvent;
+
+import com.erva.DAO.EntregaDAOJDBC;
+import com.erva.model.Entrega;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -11,12 +11,9 @@ import javafx.stage.Stage;
 
 import java.io.IOException;
 import java.sql.SQLException;
+import java.util.ArrayList;
 
-public class CadastrarMotoristaController {
-
-    @FXML
-    private Button btnCadastrarMotorista;
-
+public class RemoverEntregaController {
     @FXML
     private Button btnCadastros;
 
@@ -24,17 +21,27 @@ public class CadastrarMotoristaController {
     private Button btnEntregas;
 
     @FXML
-    private TextField textFieldCaminhao;
+    private ComboBox<Integer> comboBoxId;
 
     @FXML
-    private TextField textFieldCpfCnpj;
-
+    void initialize() {
+        try{
+            mostrarId();
+        }
+        catch(SQLException e){
+            e.printStackTrace();
+        }
+    }
     @FXML
-    private CheckBox checkBoxEquipeColeta;
-
-    @FXML
-    private TextField textFieldNome;
-
+    void mostrarId() throws SQLException{
+        EntregaDAOJDBC entregaDAO = new EntregaDAOJDBC();
+        ArrayList<Entrega> entregas = entregaDAO.listaTodosEntregas();
+        //entregas.sort(null);
+        comboBoxId.getItems().clear();
+        for(Entrega entrega : entregas){
+            comboBoxId.getItems().add(entrega.getEntregaId());
+        }
+    }
     @FXML
     public void acessarCadastros(javafx.event.ActionEvent actionEvent) throws SQLException {
         try {
@@ -66,19 +73,12 @@ public class CadastrarMotoristaController {
     }
 
     @FXML
-    void cadastrarMotorista(javafx.event.ActionEvent actionEvent) throws SQLException {
-        MotoristaDAOJDBC motoristaDAO = new MotoristaDAOJDBC();
-        Motorista motorista = new Motorista(textFieldCpfCnpj.getText());
-
-        motorista.setCaminhao(textFieldCaminhao.getText());
-        motorista.setNome(textFieldNome.getText());
-        if(checkBoxEquipeColeta.isSelected()) {
-            motorista.setEquipeColeta(true);
-        } else {
-            motorista.setEquipeColeta(false);
-        }
-        motoristaDAO.inserirMotorista(motorista);
-        new Alert(Alert.AlertType.CONFIRMATION, "Motorista registrado com sucesso.", ButtonType.OK).showAndWait();
+    void removerEntrega(javafx.event.ActionEvent actionEvent) throws SQLException {
+        EntregaDAOJDBC  entregaDAOJDBC = new EntregaDAOJDBC();
+        Entrega entregaAux = new Entrega();
+        entregaAux.setEntregaId(comboBoxId.getValue());
+        entregaDAOJDBC.removerEntrega(entregaAux);
+        new Alert(Alert.AlertType.CONFIRMATION, "Entrega removida com sucesso.", ButtonType.OK).showAndWait();
     }
 
 }
