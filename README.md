@@ -23,10 +23,10 @@ Esse projeto foi feito para rodar no terminal.
 Primeiro você deve clonar o repositório, depois compilar os arquivos do software (Dentro do diretório src):
 
 ```bash
-  javac main.java
+  javac teste.java
 ```
 Depois disso, basta apenas executar o jogo
 
 ```bash
-  java main
+  java teste
 ```
