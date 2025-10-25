@@ -50,7 +50,7 @@ public class EntregasController {
     @FXML
     void removerRegistro(ActionEvent event) {
         try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/erva/ervateiro/menu.fxml"));
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/erva/ervateiro/RemoverEntrega.fxml"));
             Parent telaRegistros = loader.load();
 
             Stage stage = new Stage();

@@ -75,7 +75,7 @@ public class EntregaDAOJDBC implements EntregaDAO {
     public ArrayList<Entrega> listaTodosEntregas() throws SQLException{
         ArrayList<Entrega> entregas = new ArrayList<>();
         open();
-        this.sql = "SELECT * FROM entrega";
+        this.sql = "SELECT * FROM entrega ORDER BY 1";
         this.preparedStatement = this.connection.prepareStatement(this.sql);
         this.resultSet = this.preparedStatement.executeQuery();
         while(this.resultSet.next()){
@@ -143,7 +143,7 @@ public class EntregaDAOJDBC implements EntregaDAO {
             sqlBuilder.append(" AND e.tipoErva ILIKE ?");
             params.add("%" + tipoErva + "%");
         }
-
+        sqlBuilder.append(" ORDER BY 1");
         this.preparedStatement = this.connection.prepareStatement(sqlBuilder.toString());
 
         for (int i = 0; i < params.size(); i++) {
