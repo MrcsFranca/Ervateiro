@@ -15,3 +15,7 @@ O software consiste em um CRUD para gerenciar as entregas da empresa Terra Do Ma
 ## 🖥️ Detalhamento técnico
 
 O software possui uma interface amigável e simples de se utilizar, possui feedbacks ao usuário e atualizações em tempo real.
+
+## 🗂️ Banco de dados
+
+[Link para script sql:] (https://docs.google.com/document/d/1sBkfm4uLApjHHl3W5LN3U8QfCsoXb4bS8niPTs3Hdsc/edit?usp=sharing)
