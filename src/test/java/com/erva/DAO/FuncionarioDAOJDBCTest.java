@@ -24,6 +24,18 @@ class FuncionarioDAOJDBCTest {
     }
 
     @Test
+    void inserirFuncionarioInvalido() throws SQLException {
+        FuncionarioDAOJDBC funcionarioDAOJDBC = new FuncionarioDAOJDBC();
+        Funcionario  funcionario = new Funcionario("070506391829038190280990");
+        funcionario.setNumCt("123456789");
+        funcionario.setCelular("40028922");
+        funcionario.setNome("FuncTeste");
+        funcionarioDAOJDBC.removerFuncionario(funcionario);
+        assertThrows(org.postgresql.util.PSQLException.class, () -> {
+            funcionarioDAOJDBC.inserirFuncionario(funcionario);
+        }, "Erro ao inserir funcionario invalido, excecao de sql nao lançada");
+    }
+    @Test
     void buscarFuncionario() throws SQLException {
         FuncionarioDAOJDBC funcionarioDAOJDBC = new FuncionarioDAOJDBC();
         Funcionario funcionario = new Funcionario("07050680990");
