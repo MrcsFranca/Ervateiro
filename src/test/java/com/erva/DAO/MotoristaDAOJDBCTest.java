@@ -1,6 +1,8 @@
 package com.erva.DAO;
 
 import com.erva.model.Motorista;
+import org.junit.jupiter.api.AfterEach;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import java.sql.SQLException;
@@ -8,6 +10,25 @@ import java.sql.SQLException;
 import static org.junit.jupiter.api.Assertions.*;
 
 class MotoristaDAOJDBCTest {
+    private MotoristaDAOJDBC dao;
+    private Motorista motorista;
+
+    @BeforeEach
+    void setUp() throws SQLException {
+        dao = new MotoristaDAOJDBC();
+        motorista = new Motorista("12345");
+        motorista.setNome("Nome Teste");
+        motorista.setCaminhao("Mercedes-Benz on Autobahen");
+        motorista.setEquipeColeta(false);
+        dao.inserirMotorista(motorista);
+    }
+
+    @AfterEach
+    void tearDown() throws SQLException {
+        if (motorista != null) {
+            dao.removerMotorista(motorista);
+        }
+    }
 
     @Test
     void inserirMotorista() throws SQLException {
@@ -44,6 +65,16 @@ class MotoristaDAOJDBCTest {
         assertDoesNotThrow(() -> {
             motoristaDAOJDBC.buscaMotorista(motorista);
         }, "Erro ao buscar motorista, excecao de sql lançada");
+    }
+
+    @Test
+    void removerMotoristaInexistente() throws SQLException {
+        Motorista motoristaInexistente = new Motorista("99999");
+
+        assertDoesNotThrow(() -> {
+            dao.removerMotorista(motoristaInexistente);
+        }, "Remoção de motorista inexistente não deveria lançar exceções");
+
     }
 
 }
