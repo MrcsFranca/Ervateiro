@@ -87,9 +87,17 @@ class FuncionarioDAOJDBCTest {
         funcionario.setNumCt("124578963025525852");
         funcionario.setCelular("7415896313467845135468751354");
 
-        assertDoesNotThrow(() -> {
+        assertThrows(org.postgresql.util.PSQLException.class, () -> {
             dao.atualizarFuncionario(funcionario);
         });
+    }
+
+    @Test
+    void removerFuncionarioValido() throws SQLException {
+
+        assertDoesNotThrow(() -> {
+            dao.removerFuncionario(funcionario);
+        }, "Erro ao remover o funcionario");
     }
 
 }
