@@ -19,3 +19,7 @@ O software possui uma interface amigável e simples de se utilizar, possui feedb
 ## 🗂️ Banco de dados
 
 Link para script sql: https://docs.google.com/document/d/1sBkfm4uLApjHHl3W5LN3U8QfCsoXb4bS8niPTs3Hdsc/edit?usp=sharing
+
+## 👀 Testes
+
+Link para documentação de testes implementados: [https://docs.google.com/document/d/1sBkfm4uLApjHHl3W5LN3U8QfCsoXb4bS8niPTs3Hdsc/edit?usp=sharing](https://docs.google.com/document/d/1JutGgenEeNdbi88ZZAvh62cBpyZ_oESQFYhhmmqb9dA/edit?tab=t.0)
