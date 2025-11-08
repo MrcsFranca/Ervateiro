@@ -16,17 +16,10 @@ O software consiste em um CRUD para gerenciar as entregas da empresa Terra Do Ma
 
 O software possui uma interface amigável e simples de se utilizar, possui feedbacks ao usuário e atualizações em tempo real.
 
-## 👨‍💻 Como instalar
+## 🗂️ Banco de dados
 
-Esse projeto foi feito para rodar no terminal.
+Link para script sql: https://docs.google.com/document/d/1sBkfm4uLApjHHl3W5LN3U8QfCsoXb4bS8niPTs3Hdsc/edit?usp=sharing
 
-Primeiro você deve clonar o repositório, depois compilar os arquivos do software (Dentro do diretório src):
+## 🗂️ Testes
 
-```bash
-  javac teste.java
-```
-Depois disso, basta apenas executar o jogo
-
-```bash
-  java teste
-```
+Link para documentação de testes implementados: [https://docs.google.com/document/d/1sBkfm4uLApjHHl3W5LN3U8QfCsoXb4bS8niPTs3Hdsc/edit?usp=sharing](https://docs.google.com/document/d/1JutGgenEeNdbi88ZZAvh62cBpyZ_oESQFYhhmmqb9dA/edit?tab=t.0)
