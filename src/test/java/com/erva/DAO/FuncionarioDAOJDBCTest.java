@@ -78,7 +78,7 @@ class FuncionarioDAOJDBCTest {
 
         assertDoesNotThrow(() -> {
             dao.atualizarFuncionario(funcionario);
-        });
+        }, "A atualização de Funcionário não deveria lançar uma exceção");
     }
 
     @Test
@@ -89,7 +89,7 @@ class FuncionarioDAOJDBCTest {
 
         assertThrows(org.postgresql.util.PSQLException.class, () -> {
             dao.atualizarFuncionario(funcionario);
-        });
+        }, "Erro ao atualizar Funcionário");
     }
 
     @Test
