@@ -41,7 +41,7 @@ class FornecedorDAOJDBCTest {
 
         assertDoesNotThrow(() -> {
             dao.atualizarFornecedor(fornecedor);
-        });
+        },"A atualização de fornecedor não deveria lançar uma exceção");
     }
 
     @Test
