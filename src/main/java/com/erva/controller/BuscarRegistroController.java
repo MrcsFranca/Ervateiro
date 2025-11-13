@@ -60,6 +60,8 @@ public class BuscarRegistroController {
             Stage stage = new Stage();
             stage.setTitle("Cadastros");
             stage.setScene(new Scene(telaRegistros));
+            stage.setMaximized(false);
+            stage.setResizable(false);
             stage.show();
         } catch (IOException e) {
             e.printStackTrace();
@@ -75,6 +77,8 @@ public class BuscarRegistroController {
             Stage stage = new Stage();
             stage.setTitle("Entregas");
             stage.setScene(new Scene(telaRegistros));
+            stage.setMaximized(false);
+            stage.setResizable(false);
             stage.show();
         } catch (IOException e) {
             e.printStackTrace();
@@ -92,10 +96,10 @@ public class BuscarRegistroController {
         Timestamp dataEntregaInicio = null;
         Timestamp dataEntregaFinal = null;
         if (dataInicio != null) {
-            dataEntregaInicio = Timestamp.valueOf(LocalDateTime.of(dataInicio, LocalTime.MIN)); // 00:00
+            dataEntregaInicio = Timestamp.valueOf(LocalDateTime.of(dataInicio, LocalTime.MIN));
         }
         if (dataFim != null) {
-            dataEntregaFinal = Timestamp.valueOf(LocalDateTime.of(dataFim, LocalTime.of(23, 59, 59))); // 23:59:59
+            dataEntregaFinal = Timestamp.valueOf(LocalDateTime.of(dataFim, LocalTime.of(23, 59, 59)));
         }
         String tipoEntrega = null;
         if (NativaRadioBtn.isSelected()) {
@@ -123,6 +127,8 @@ public class BuscarRegistroController {
         Stage stage = new Stage();
         stage.setTitle("Lista de Entregas");
         stage.setScene(new Scene(root));
+        stage.setMaximized(false);
+        stage.setResizable(false);
         stage.show();
     }
 }

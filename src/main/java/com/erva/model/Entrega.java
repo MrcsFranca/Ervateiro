@@ -90,8 +90,4 @@ public class Entrega {
                 ", descricao='" + descricao + '\'' +
                 '}';
     }
-
-    public Double calculaValor(Double valorArroba) {
-        return valorArroba * (peso / 15);
-    }
 }

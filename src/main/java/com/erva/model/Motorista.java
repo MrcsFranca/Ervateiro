@@ -22,10 +22,6 @@ public class Motorista {
         this.caminhao = caminhao;
     }
 
-    public void setCodMotorista(String codMotorista) {
-        this.codMotorista = codMotorista;
-    }
-
     public String getNome() {
         return nome;
     }
@@ -41,18 +37,6 @@ public class Motorista {
     public Boolean getEquipeColeta() {
         return equipeColeta;
     }
-
-    /*
-    @Override
-    public String toString() {
-        return "Motorista{" +
-                "codMotorista='" + codMotorista + '\'' +
-                ", nome='" + nome + '\'' +
-                ", caminhao='" + caminhao + '\'' +
-                ", equipeColeta=" + equipeColeta +
-                '}';
-    }
-     */
 
     @Override
     public String toString() {

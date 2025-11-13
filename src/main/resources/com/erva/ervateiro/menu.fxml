@@ -46,9 +46,9 @@
                             </font>
                         </Label>
                     </children>
-               <cursor>
-                  <Cursor fx:constant="DEFAULT" />
-               </cursor></AnchorPane>
+                    <cursor>
+                        <Cursor fx:constant="DEFAULT" />
+                    </cursor></AnchorPane>
             </items>
         </SplitPane>
     </children>
