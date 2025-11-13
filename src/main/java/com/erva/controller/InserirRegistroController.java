@@ -48,6 +48,10 @@ public class InserirRegistroController{
     private TextField textFieldPeso;
     @FXML
     private Label countLbl;
+
+    @FXML
+    private ToggleGroup tipoEntregaGroup;
+
     @FXML
     private ComboBox<Funcionario> comboBoxFuncionario;
     private int totalEntregas;
@@ -64,6 +68,11 @@ public class InserirRegistroController{
         } catch (SQLException e) {
             e.printStackTrace();
         }
+        tipoEntregaGroup = new ToggleGroup();
+        radioBtnCultivada.setToggleGroup(tipoEntregaGroup);
+        radioBtnMista.setToggleGroup(tipoEntregaGroup);
+        radioBtnNativa.setToggleGroup(tipoEntregaGroup);
+
     }
 
     @FXML
