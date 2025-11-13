@@ -102,7 +102,6 @@ public class EntregaDAOJDBC implements EntregaDAO {
                                              String tipoErva) throws SQLException {
         ArrayList<Entrega> entregas = new ArrayList<>();
         open();
-
         StringBuilder sqlBuilder = new StringBuilder();
         sqlBuilder.append("""
         SELECT e.*, m.nome AS nomeMotorista, f.nome AS nomeFornecedor
@@ -111,10 +110,43 @@ public class EntregaDAOJDBC implements EntregaDAO {
         JOIN fornecedor f ON e.fornecedorId = f.fornecedorId
         WHERE 1=1
     """);
-
         // Lista dinâmica de parâmetros
         ArrayList<Object> params = new ArrayList<>();
 
+        criaParametros(nomeMotorista, nomeFornecedor, dataInicio, dataFim, pesoMin, pesoMax, tipoErva, params, sqlBuilder);
+        System.out.println(params);
+        this.preparedStatement = this.connection.prepareStatement(sqlBuilder.toString());
+
+        for (int i = 0; i < params.size(); i++) {
+            this.preparedStatement.setObject(i + 1, params.get(i));
+        }
+
+        this.resultSet = this.preparedStatement.executeQuery();
+        while (this.resultSet.next()) {
+            Entrega entregaAux = new Entrega();
+            Funcionario funcionarioAux = new Funcionario(this.resultSet.getString("cpf"));
+            Fornecedor fornecedorAux = new Fornecedor(this.resultSet.getInt("fornecedorId"));
+            Motorista motoristaAux = new Motorista(this.resultSet.getString("codMotorista"));
+
+            entregaAux.setEntregaId(this.resultSet.getInt("entregaId"));
+            entregaAux.setMotorista(motoristaAux);
+            entregaAux.setFornecedor(fornecedorAux);
+            entregaAux.setFuncionario(funcionarioAux);
+            entregaAux.setDataHora(this.resultSet.getTimestamp("dataHora"));
+            entregaAux.setTipoErva(this.resultSet.getString("tipoErva"));
+            entregaAux.setPeso(this.resultSet.getDouble("peso"));
+            entregaAux.setDescricao(this.resultSet.getString("descricao"));
+            entregas.add(entregaAux);
+        }
+
+        close();
+        return entregas;
+    }
+
+    private void criaParametros(String nomeMotorista, String nomeFornecedor,
+                           Timestamp dataInicio, Timestamp dataFim,
+                           Double pesoMin, Double pesoMax,
+                           String tipoErva, ArrayList<Object> params, StringBuilder sqlBuilder) {
         if (nomeMotorista != null && !nomeMotorista.isEmpty()) {
             sqlBuilder.append(" AND m.nome ILIKE ?"); // ILIKE -> busca sem case-sensitive (PostgreSQL)
             params.add("%" + nomeMotorista + "%");
@@ -144,32 +176,6 @@ public class EntregaDAOJDBC implements EntregaDAO {
             params.add("%" + tipoErva + "%");
         }
         sqlBuilder.append(" ORDER BY 1");
-        this.preparedStatement = this.connection.prepareStatement(sqlBuilder.toString());
-
-        for (int i = 0; i < params.size(); i++) {
-            this.preparedStatement.setObject(i + 1, params.get(i));
-        }
-
-        this.resultSet = this.preparedStatement.executeQuery();
-        while (this.resultSet.next()) {
-            Entrega entregaAux = new Entrega();
-            Funcionario funcionarioAux = new Funcionario(this.resultSet.getString("cpf"));
-            Fornecedor fornecedorAux = new Fornecedor(this.resultSet.getInt("fornecedorId"));
-            Motorista motoristaAux = new Motorista(this.resultSet.getString("codMotorista"));
-
-            entregaAux.setEntregaId(this.resultSet.getInt("entregaId"));
-            entregaAux.setMotorista(motoristaAux);
-            entregaAux.setFornecedor(fornecedorAux);
-            entregaAux.setFuncionario(funcionarioAux);
-            entregaAux.setDataHora(this.resultSet.getTimestamp("dataHora"));
-            entregaAux.setTipoErva(this.resultSet.getString("tipoErva"));
-            entregaAux.setPeso(this.resultSet.getDouble("peso"));
-            entregaAux.setDescricao(this.resultSet.getString("descricao"));
-            entregas.add(entregaAux);
-        }
-
-        close();
-        return entregas;
     }
 
     public int contarTotalEntregas() throws SQLException {

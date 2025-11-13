@@ -39,6 +39,17 @@ public class CadastrarFornecedorController {
     private RadioButton radioButtonPessoaJuridica;
 
     @FXML
+    private ToggleGroup tipoFornecedorGroup;
+
+    @FXML
+    public void initialize() {
+        tipoFornecedorGroup =  new ToggleGroup();
+        radioButtonPessoaFisica.setToggleGroup(tipoFornecedorGroup);
+        radioButtonPessoaJuridica.setToggleGroup(tipoFornecedorGroup);
+    }
+
+
+    @FXML
     public void acessarCadastros(javafx.event.ActionEvent actionEvent) throws SQLException {
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/erva/ervateiro/Cadastros.fxml"));
