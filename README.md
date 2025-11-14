@@ -16,9 +16,36 @@ O software consiste em um CRUD para gerenciar as entregas da empresa Terra Do Ma
 
 O software possui uma interface amigável e simples de se utilizar, possui feedbacks ao usuário e atualizações em tempo real.
 
+
 ## 🗂️ Banco de dados
 
 Link para script sql: https://docs.google.com/document/d/1sBkfm4uLApjHHl3W5LN3U8QfCsoXb4bS8niPTs3Hdsc/edit?usp=sharing
+
+## ⚙️ Configuração do banco:
+
+- Vá para o diretório: src/main/java/com/erva/DAO/  
+- Crie um ENUM chamado "DataBaseConfig.java"
+- Insira o seguinte código na classe:
+ ```java
+package com.erva.DAO;
+
+public enum DataBaseConfig {
+    URL("SUA_URL_DO_BD"),
+    SENHA("SUA_SENHA"),
+    USUARIO("SEU_USUARIO");
+
+    private String valor;
+
+    DataBaseConfig(String s) {
+        valor = s;
+    }
+
+    public String get() {
+        return valor;
+    }
+}
+```
+
 
 ## 👀 Testes
 
