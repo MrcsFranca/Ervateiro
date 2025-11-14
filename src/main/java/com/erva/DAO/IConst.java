@@ -1,3 +1,5 @@
+//Parte da refatoração: criar ENUM para encapsular dados sensíveis do banco de dados
+
 package com.erva.DAO;
 
 public interface IConst {

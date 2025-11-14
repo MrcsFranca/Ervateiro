@@ -1,3 +1,5 @@
+//Parte da refatoração: criar toggleGroup para inserir radioButtons da tela, não permitindo mais a seleção de mais de um botão
+
 package com.erva.controller;
 
 import com.erva.DAO.EntregaDAOJDBC;

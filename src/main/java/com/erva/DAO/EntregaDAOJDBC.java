@@ -1,3 +1,5 @@
+//Parte da refatoração: Modularizar método buscarEntrega para reduzir seu tamanho, o método foi dividido em dois
+
 package com.erva.DAO;
 
 import com.erva.controller.InserirRegistroController;

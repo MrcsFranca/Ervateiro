@@ -1,3 +1,5 @@
+/*Parte da refatoração: Criar styleClass logo-button para nao permitir que a imagem da logo possuia propriedades de um botao*/
+
 .button > .graphic {
     -fx-background-color: #556a2f;
     -fx-text-fill: white;

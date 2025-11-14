@@ -1,3 +1,5 @@
+//Parte da refatoração: Mudança do nome da classe para condizer melhor com seu propósito
+//Parte da refatoração: Foram removidos vários métodos redundantes de varias classes
 package com.erva.main;
 
 import javafx.application.Application;

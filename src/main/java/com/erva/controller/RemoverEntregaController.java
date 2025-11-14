@@ -1,3 +1,5 @@
+//Parte da refatoração: Adicionar refresh na tela de remover entrega para atualizar os ids disponíveis para remoção.
+
 package com.erva.controller;
 
 import com.erva.DAO.EntregaDAOJDBC;

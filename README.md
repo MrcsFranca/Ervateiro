@@ -23,7 +23,7 @@ Link para script sql: https://docs.google.com/document/d/1sBkfm4uLApjHHl3W5LN3U8
 
 ## ⚙️ Configuração do banco:
 
-- Vá para o diretório: src/main/java/com/erva/DAO/  
+- Vá para o diretório: src/main/java/com/erva/DAO/
 - Crie um ENUM chamado "DataBaseConfig.java"
 - Insira o seguinte código na classe:
  ```java
