@@ -1,3 +1,6 @@
+//Parte da refatoração:  Remover possibilidade de maximização da tela usando o setResizeble e setMaximized, mudanças
+//aplicadas em todas as telas
+
 package com.erva.controller;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;

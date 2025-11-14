@@ -1,3 +1,5 @@
+//Parte da refatoração: Adicionar refresh na tela de remover entrega para atualizar os ids disponíveis para remoção.
+
 package com.erva.controller;
 
 import com.erva.DAO.EntregaDAOJDBC;
@@ -81,6 +83,7 @@ public class RemoverEntregaController {
         Entrega entregaAux = new Entrega();
         entregaAux.setEntregaId(comboBoxId.getValue());
         entregaDAOJDBC.removerEntrega(entregaAux);
+        initialize();
         new Alert(Alert.AlertType.CONFIRMATION, "Entrega removida com sucesso.", ButtonType.OK).showAndWait();
     }
 

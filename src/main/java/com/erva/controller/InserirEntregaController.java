@@ -1,3 +1,5 @@
+//Parte da refatoração: criar toggleGroup para inserir radioButtons da tela, não permitindo mais a seleção de mais de um botão
+
 package com.erva.controller;
 
 import com.erva.DAO.EntregaDAOJDBC;
@@ -20,7 +22,8 @@ import java.io.IOException;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
-public class AtualizarRegistroController {
+public class InserirEntregaController {
+
     @FXML
     private Button btnEntrega;
 
@@ -44,12 +47,15 @@ public class AtualizarRegistroController {
 
     @FXML
     private TextField textFieldPeso;
+    @FXML
+    private Label countLbl;
 
     @FXML
-    private ComboBox<Integer> comboBoxId;
+    private ToggleGroup tipoEntregaGroup;
 
     @FXML
     private ComboBox<Funcionario> comboBoxFuncionario;
+    private int totalEntregas;
     @FXML
     public void initialize() {
         EntregaDAOJDBC entregaDAOJDBC = new EntregaDAOJDBC();
@@ -57,11 +63,17 @@ public class AtualizarRegistroController {
             mostrarFuncionarios();
             mostrarFornecedor();
             mostrarMotorista();
-            mostrarId();
+            totalEntregas = entregaDAOJDBC.contarTotalEntregas();
+            countLbl.setText(""+totalEntregas);
 
         } catch (SQLException e) {
             e.printStackTrace();
         }
+        tipoEntregaGroup = new ToggleGroup();
+        radioBtnCultivada.setToggleGroup(tipoEntregaGroup);
+        radioBtnMista.setToggleGroup(tipoEntregaGroup);
+        radioBtnNativa.setToggleGroup(tipoEntregaGroup);
+
     }
 
     @FXML
@@ -98,15 +110,15 @@ public class AtualizarRegistroController {
         }
     }
 
-    @FXML
-    void mostrarFuncionarios() throws SQLException{
-        FuncionarioDAOJDBC funcionarioDAO = new FuncionarioDAOJDBC();
-        ArrayList<Funcionario> funcionarios = funcionarioDAO.listarTodosFuncionario();
-        comboBoxFuncionario.getItems().clear();
-        for(Funcionario funcionario : funcionarios){
-            comboBoxFuncionario.getItems().addAll(funcionario);
-        }
-    }
+   @FXML
+   void mostrarFuncionarios() throws SQLException{
+       FuncionarioDAOJDBC funcionarioDAO = new FuncionarioDAOJDBC();
+       ArrayList<Funcionario> funcionarios = funcionarioDAO.listarTodosFuncionario();
+       comboBoxFuncionario.getItems().clear();
+       for(Funcionario funcionario : funcionarios){
+           comboBoxFuncionario.getItems().addAll(funcionario);
+       }
+   }
 
     @FXML
     void mostrarMotorista() throws SQLException{
@@ -119,17 +131,6 @@ public class AtualizarRegistroController {
     }
 
     @FXML
-    void mostrarId() throws SQLException{
-        EntregaDAOJDBC entregaDAO = new EntregaDAOJDBC();
-        ArrayList<Entrega> entregas = entregaDAO.listaTodosEntregas();
-        comboBoxId.getItems().clear();
-        for(Entrega entrega : entregas){
-            comboBoxId.getItems().add(entrega.getEntregaId());
-        }
-    }
-
-
-    @FXML
     void mostrarFornecedor() throws SQLException{
         FornecedorDAOJDBC fornecedorDAO = new FornecedorDAOJDBC();
         ArrayList<Fornecedor> fornecedores = fornecedorDAO.listarTodosFornecedor();
@@ -140,10 +141,9 @@ public class AtualizarRegistroController {
     }
 
     @FXML
-    void atualizarEntrega(ActionEvent event) throws SQLException {
+    void cadastrarEntrega(ActionEvent event) throws SQLException {
         EntregaDAOJDBC entregaDAO = new EntregaDAOJDBC();
         Entrega entregaAux = new Entrega();
-        entregaAux.setEntregaId(comboBoxId.getValue());
         entregaAux.setDescricao(textFieldDescricao.getText());
         entregaAux.setPeso(Double.parseDouble(textFieldPeso.getText()));
         entregaAux.setFornecedor(comboBoxFornecedor.getValue());
@@ -160,8 +160,9 @@ public class AtualizarRegistroController {
         {
             entregaAux.setTipoErva("misturada");
         }
-        entregaDAO.atualizaEntrega(entregaAux);
-        new Alert(Alert.AlertType.CONFIRMATION, "Entrega atualizada com sucesso.", ButtonType.OK).showAndWait();
+        entregaDAO.insereEntrega(entregaAux);
+        countLbl.setText(String.valueOf(entregaDAO.contarTotalEntregas()));
+        new Alert(Alert.AlertType.CONFIRMATION, "Entrega registrada com sucesso.", ButtonType.OK).showAndWait();
 
     }
 

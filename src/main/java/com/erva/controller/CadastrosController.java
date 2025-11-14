@@ -1,5 +1,4 @@
 package com.erva.controller;
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -81,7 +80,7 @@ public class CadastrosController {
     @FXML
     void CadastrarFuncionario(javafx.event.ActionEvent actionEvent) throws SQLException {
         try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/erva/ervateiro/cadastrarFuncionario.fxml"));
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/erva/ervateiro/CadastrarFuncionario.fxml"));
             Parent telaRegistros = loader.load();
 
             Stage stage = new Stage();

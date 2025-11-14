@@ -6,11 +6,10 @@ import javafx.scene.*;
 import javafx.scene.control.Button;
 import javafx.stage.Stage;
 
-import java.awt.event.ActionEvent;
 import java.io.IOException;
 import java.sql.SQLException;
 
-public class AcessarRegistroController {
+public class AcessarEntregaController {
     @FXML
     private Button btnMostrarRegistro;
 
@@ -21,7 +20,7 @@ public class AcessarRegistroController {
             Parent telaRegistros = loader.load();
 
             Stage stage = new Stage();
-            stage.setTitle("Registros de Entrega");
+            stage.setTitle("Registros de Entregas");
             stage.setScene(new Scene(telaRegistros));
             stage.setMaximized(false);
             stage.setResizable(false);

@@ -1,5 +1,6 @@
-package com.erva.controller;
+//Parte da refatoração: criar toggleGroup para inserir radioButtons da tela, não permitindo mais a seleção de mais de um botão
 
+package com.erva.controller;
 
 import javafx.event.ActionEvent;
 
@@ -7,16 +8,12 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
-import javafx.scene.control.DatePicker;
-import javafx.scene.control.RadioButton;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import com.erva.model.Entrega;
-import com.erva.DAO.EntregaDAO;
 import com.erva.DAO.EntregaDAOJDBC;
+import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
-import java.awt.*;
 import java.io.IOException;
 import java.sql.SQLException;
 import java.sql.Timestamp;
@@ -25,7 +22,7 @@ import java.time.LocalDateTime;
 import java.time.LocalTime;
 import java.util.ArrayList;
 
-public class BuscarRegistroController {
+public class BuscarEntregaController {
 
     @FXML
     private RadioButton CultivadaRadioBtn;
@@ -50,6 +47,16 @@ public class BuscarRegistroController {
 
     @FXML
     private TextField pesoMinTextField;
+
+    @FXML
+    private ToggleGroup categoriaRadioBtn;
+
+    public void initialize() {
+        categoriaRadioBtn = new ToggleGroup();
+        NativaRadioBtn.setToggleGroup(categoriaRadioBtn);
+        MistaRadioBtn.setToggleGroup(categoriaRadioBtn);
+        CultivadaRadioBtn.setToggleGroup(categoriaRadioBtn);
+    }
 
     @FXML
     public void acessarCadastros(javafx.event.ActionEvent actionEvent) throws SQLException {
