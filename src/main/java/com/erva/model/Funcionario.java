@@ -10,10 +10,6 @@ public class Funcionario {
         this.nome = nome;
     }
 
-    public void setCpf(String cpf) {
-        this.cpf = cpf;
-    }
-
     public void setNumCt(String numCt) {
         this.numCt = numCt;
     }
@@ -25,6 +21,7 @@ public class Funcionario {
     public Funcionario(String cpf){
         this.cpf = cpf;
     }
+
     public String getNome() {
         return nome;
     }
@@ -40,19 +37,6 @@ public class Funcionario {
     public String getCelular() {
         return celular;
     }
-
-    /*
-
-    @Override
-    public String toString() {
-        return "Funcionario{" +
-                "cpf='" + cpf + '\'' +
-                ", nome='" + nome + '\'' +
-                ", numCt='" + numCt + '\'' +
-                ", celular='" + celular + '\'' +
-                '}';
-    }
-     */
 
     @Override
     public String toString() {

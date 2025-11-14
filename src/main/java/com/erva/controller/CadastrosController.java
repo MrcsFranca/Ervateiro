@@ -36,6 +36,8 @@ public class CadastrosController {
             Stage stage = new Stage();
             stage.setTitle("Cadastros");
             stage.setScene(new Scene(telaRegistros));
+            stage.setMaximized(false);
+            stage.setResizable(false);
             stage.show();
         } catch (IOException e) {
             e.printStackTrace();
@@ -51,6 +53,8 @@ public class CadastrosController {
             Stage stage = new Stage();
             stage.setTitle("Entregas");
             stage.setScene(new Scene(telaRegistros));
+            stage.setMaximized(false);
+            stage.setResizable(false);
             stage.show();
         } catch (IOException e) {
             e.printStackTrace();
@@ -66,6 +70,8 @@ public class CadastrosController {
             Stage stage = new Stage();
             stage.setTitle("CadastrarFornecedor");
             stage.setScene(new Scene(telaRegistros));
+            stage.setMaximized(false);
+            stage.setResizable(false);
             stage.show();
         } catch (IOException e) {
             e.printStackTrace();
@@ -81,6 +87,8 @@ public class CadastrosController {
             Stage stage = new Stage();
             stage.setTitle("CadastrarFuncionario");
             stage.setScene(new Scene(telaRegistros));
+            stage.setMaximized(false);
+            stage.setResizable(false);
             stage.show();
         } catch (IOException e) {
             e.printStackTrace();
@@ -96,6 +104,8 @@ public class CadastrosController {
             Stage stage = new Stage();
             stage.setTitle("CadastrarMotorista");
             stage.setScene(new Scene(telaRegistros));
+            stage.setMaximized(false);
+            stage.setResizable(false);
             stage.show();
         } catch (IOException e) {
             e.printStackTrace();

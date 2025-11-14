@@ -36,7 +36,6 @@ public class RemoverEntregaController {
     void mostrarId() throws SQLException{
         EntregaDAOJDBC entregaDAO = new EntregaDAOJDBC();
         ArrayList<Entrega> entregas = entregaDAO.listaTodosEntregas();
-        //entregas.sort(null);
         comboBoxId.getItems().clear();
         for(Entrega entrega : entregas){
             comboBoxId.getItems().add(entrega.getEntregaId());
@@ -51,6 +50,8 @@ public class RemoverEntregaController {
             Stage stage = new Stage();
             stage.setTitle("Cadastros");
             stage.setScene(new Scene(telaRegistros));
+            stage.setMaximized(false);
+            stage.setResizable(false);
             stage.show();
         } catch (IOException e) {
             e.printStackTrace();
@@ -66,6 +67,8 @@ public class RemoverEntregaController {
             Stage stage = new Stage();
             stage.setTitle("Entregas");
             stage.setScene(new Scene(telaRegistros));
+            stage.setMaximized(false);
+            stage.setResizable(false);
             stage.show();
         } catch (IOException e) {
             e.printStackTrace();

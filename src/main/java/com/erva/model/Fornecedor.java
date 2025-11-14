@@ -12,10 +12,6 @@ public class Fornecedor {
         this.fornecedorFisico = fornecedorFisico;
     }
 
-    public void setFornecedorId(int fornecedorId) {
-        this.fornecedorId = fornecedorId;
-    }
-
     public void setNome(String nome) {
         this.nome = nome;
     }
@@ -61,20 +57,6 @@ public class Fornecedor {
     public Boolean getFornecedorFisico() {
         return fornecedorFisico;
     }
-
-    /*
-    @Override
-    public String toString() {
-        return "Fornecedor{" +
-                "fornecedorId='" + fornecedorId + '\'' +
-                ", fornecedorFisico=" + fornecedorFisico +
-                ", nome='" + nome + '\'' +
-                ", cpf='" + cpf + '\'' +
-                ", cnpj='" + cnpj + '\'' +
-                ", endereco='" + endereco + '\'' +
-                '}';
-    }
-     */
 
     @Override
     public String toString() {

@@ -16,8 +16,4 @@ public class SistemaGestaoPesagem {
                 ", lista=" + lista +
                 '}';
     }
-
-    public void busca(String nome, Timestamp data, Motorista motorista) {
-        //chamar classe q interage com bd para pesqusiar
-    }
 }

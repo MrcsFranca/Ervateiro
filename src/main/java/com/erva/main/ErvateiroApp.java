@@ -5,7 +5,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 
-public class Teste extends Application {
+public class ErvateiroApp extends Application {
 
     @Override
     public void start(Stage primaryStage) throws Exception {
@@ -13,6 +13,8 @@ public class Teste extends Application {
         Scene scene = new Scene(loader.load());
         primaryStage.setTitle("Tabela de Entregas");
         primaryStage.setScene(scene);
+        primaryStage.setResizable(false);
+        primaryStage.setMaximized(false);
         primaryStage.show();
     }
 

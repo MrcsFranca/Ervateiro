@@ -39,6 +39,17 @@ public class CadastrarFornecedorController {
     private RadioButton radioButtonPessoaJuridica;
 
     @FXML
+    private ToggleGroup tipoFornecedorGroup;
+
+    @FXML
+    public void initialize() {
+        tipoFornecedorGroup =  new ToggleGroup();
+        radioButtonPessoaFisica.setToggleGroup(tipoFornecedorGroup);
+        radioButtonPessoaJuridica.setToggleGroup(tipoFornecedorGroup);
+    }
+
+
+    @FXML
     public void acessarCadastros(javafx.event.ActionEvent actionEvent) throws SQLException {
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/erva/ervateiro/Cadastros.fxml"));
@@ -47,6 +58,8 @@ public class CadastrarFornecedorController {
             Stage stage = new Stage();
             stage.setTitle("Cadastros");
             stage.setScene(new Scene(telaRegistros));
+            stage.setMaximized(false);
+            stage.setResizable(false);
             stage.show();
         } catch (IOException e) {
             e.printStackTrace();
@@ -62,6 +75,8 @@ public class CadastrarFornecedorController {
             Stage stage = new Stage();
             stage.setTitle("Entregas");
             stage.setScene(new Scene(telaRegistros));
+            stage.setMaximized(false);
+            stage.setResizable(false);
             stage.show();
         } catch (IOException e) {
             e.printStackTrace();

@@ -48,6 +48,10 @@ public class InserirRegistroController{
     private TextField textFieldPeso;
     @FXML
     private Label countLbl;
+
+    @FXML
+    private ToggleGroup tipoEntregaGroup;
+
     @FXML
     private ComboBox<Funcionario> comboBoxFuncionario;
     private int totalEntregas;
@@ -64,6 +68,11 @@ public class InserirRegistroController{
         } catch (SQLException e) {
             e.printStackTrace();
         }
+        tipoEntregaGroup = new ToggleGroup();
+        radioBtnCultivada.setToggleGroup(tipoEntregaGroup);
+        radioBtnMista.setToggleGroup(tipoEntregaGroup);
+        radioBtnNativa.setToggleGroup(tipoEntregaGroup);
+
     }
 
     @FXML
@@ -75,6 +84,8 @@ public class InserirRegistroController{
             Stage stage = new Stage();
             stage.setTitle("Cadastros");
             stage.setScene(new Scene(telaRegistros));
+            stage.setMaximized(false);
+            stage.setResizable(false);
             stage.show();
         } catch (IOException e) {
             e.printStackTrace();
@@ -90,6 +101,8 @@ public class InserirRegistroController{
             Stage stage = new Stage();
             stage.setTitle("Entregas");
             stage.setScene(new Scene(telaRegistros));
+            stage.setMaximized(false);
+            stage.setResizable(false);
             stage.show();
         } catch (IOException e) {
             e.printStackTrace();
@@ -147,7 +160,6 @@ public class InserirRegistroController{
             entregaAux.setTipoErva("misturada");
         }
         entregaDAO.insereEntrega(entregaAux);
-        //int contagem = Integer.parseInt(countLbl.getText());
         countLbl.setText(String.valueOf(entregaDAO.contarTotalEntregas()));
         new Alert(Alert.AlertType.CONFIRMATION, "Entrega registrada com sucesso.", ButtonType.OK).showAndWait();
 
