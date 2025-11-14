@@ -50,6 +50,10 @@ public class AtualizarRegistroController {
 
     @FXML
     private ComboBox<Funcionario> comboBoxFuncionario;
+
+    @FXML
+    private ToggleGroup radioButtonGroup;
+
     @FXML
     public void initialize() {
         EntregaDAOJDBC entregaDAOJDBC = new EntregaDAOJDBC();
@@ -62,6 +66,11 @@ public class AtualizarRegistroController {
         } catch (SQLException e) {
             e.printStackTrace();
         }
+        radioButtonGroup = new ToggleGroup();
+        radioBtnCultivada.setToggleGroup(radioButtonGroup);
+        radioBtnMista.setToggleGroup(radioButtonGroup);
+        radioBtnNativa.setToggleGroup(radioButtonGroup);
+
     }
 
     @FXML

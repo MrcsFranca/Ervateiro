@@ -7,15 +7,15 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
-import javafx.scene.control.DatePicker;
-import javafx.scene.control.RadioButton;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import com.erva.model.Entrega;
 import com.erva.DAO.EntregaDAO;
 import com.erva.DAO.EntregaDAOJDBC;
+import javafx.scene.control.Button;
+import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
+import javax.swing.text.PlainDocument;
 import java.awt.*;
 import java.io.IOException;
 import java.sql.SQLException;
@@ -50,6 +50,16 @@ public class BuscarRegistroController {
 
     @FXML
     private TextField pesoMinTextField;
+
+    @FXML
+    private ToggleGroup categoriaRadioBtn;
+
+    public void initialize() {
+        categoriaRadioBtn = new ToggleGroup();
+        NativaRadioBtn.setToggleGroup(categoriaRadioBtn);
+        MistaRadioBtn.setToggleGroup(categoriaRadioBtn);
+        CultivadaRadioBtn.setToggleGroup(categoriaRadioBtn);
+    }
 
     @FXML
     public void acessarCadastros(javafx.event.ActionEvent actionEvent) throws SQLException {

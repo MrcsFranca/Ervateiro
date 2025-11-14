@@ -81,6 +81,7 @@ public class RemoverEntregaController {
         Entrega entregaAux = new Entrega();
         entregaAux.setEntregaId(comboBoxId.getValue());
         entregaDAOJDBC.removerEntrega(entregaAux);
+        initialize();
         new Alert(Alert.AlertType.CONFIRMATION, "Entrega removida com sucesso.", ButtonType.OK).showAndWait();
     }
 
