@@ -23,6 +23,8 @@ public class AcessarRegistroController {
             Stage stage = new Stage();
             stage.setTitle("Registros de Entrega");
             stage.setScene(new Scene(telaRegistros));
+            stage.setMaximized(false);
+            stage.setResizable(false);
             stage.show();
         } catch (IOException e) {
             e.printStackTrace();

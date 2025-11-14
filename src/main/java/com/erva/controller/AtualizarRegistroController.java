@@ -73,6 +73,8 @@ public class AtualizarRegistroController {
             Stage stage = new Stage();
             stage.setTitle("Cadastros");
             stage.setScene(new Scene(telaRegistros));
+            stage.setMaximized(false);
+            stage.setResizable(false);
             stage.show();
         } catch (IOException e) {
             e.printStackTrace();
@@ -88,6 +90,8 @@ public class AtualizarRegistroController {
             Stage stage = new Stage();
             stage.setTitle("Entregas");
             stage.setScene(new Scene(telaRegistros));
+            stage.setMaximized(false);
+            stage.setResizable(false);
             stage.show();
         } catch (IOException e) {
             e.printStackTrace();

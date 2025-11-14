@@ -84,6 +84,8 @@ public class InserirRegistroController{
             Stage stage = new Stage();
             stage.setTitle("Cadastros");
             stage.setScene(new Scene(telaRegistros));
+            stage.setMaximized(false);
+            stage.setResizable(false);
             stage.show();
         } catch (IOException e) {
             e.printStackTrace();
@@ -99,6 +101,8 @@ public class InserirRegistroController{
             Stage stage = new Stage();
             stage.setTitle("Entregas");
             stage.setScene(new Scene(telaRegistros));
+            stage.setMaximized(false);
+            stage.setResizable(false);
             stage.show();
         } catch (IOException e) {
             e.printStackTrace();
@@ -156,7 +160,6 @@ public class InserirRegistroController{
             entregaAux.setTipoErva("misturada");
         }
         entregaDAO.insereEntrega(entregaAux);
-        //int contagem = Integer.parseInt(countLbl.getText());
         countLbl.setText(String.valueOf(entregaDAO.contarTotalEntregas()));
         new Alert(Alert.AlertType.CONFIRMATION, "Entrega registrada com sucesso.", ButtonType.OK).showAndWait();
 

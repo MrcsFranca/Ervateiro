@@ -28,7 +28,7 @@ class FornecedorDAOJDBCTest {
 
         Fornecedor ultimo = dao.listarTodosFornecedor()
                 .stream()
-                .reduce((primeiro, segundo) -> segundo) // pega o último
+                .reduce((primeiro, segundo) -> segundo)
                 .orElse(null);
 
         assertNotNull(ultimo, "Deveria haver ao menos um fornecedor inserido");
