@@ -1,44 +1,53 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.control.*?>
-<?import javafx.scene.image.*?>
-<?import javafx.scene.layout.*?>
-<?import javafx.scene.text.*?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.SplitPane?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
 
-<AnchorPane stylesheets="@style.css" prefHeight="405.0" prefWidth="591.0" xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.erva.controller.CadastrosController">
+<AnchorPane prefHeight="405.0" prefWidth="591.0" stylesheets="@style.css" xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.erva.controller.CadastrosController">
     <children>
-        <SplitPane dividerPositions="0.2549407114624506" layoutX="-7.0" layoutY="-1.0" orientation="VERTICAL" prefHeight="406.0" prefWidth="600.0">
+        <SplitPane dividerPositions="0.2549407114624506" layoutX="-7.0" layoutY="-1.0" orientation="VERTICAL" prefHeight="700.0" prefWidth="1000.0">
             <items>
-                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="100.0" prefWidth="609.0" style="-fx-background-color: #99ad67;">
+                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="100.0" prefWidth="609.0" style="-fx-background-color: #e3b31e;">
                     <children>
-                        <Button styleClass="logo-button" layoutX="30.0" layoutY="13.0" mnemonicParsing="false" prefHeight="74.0" prefWidth="122.0" style="-fx-background-color: #e3b31e;">
+                        <Button layoutX="104.0" layoutY="39.0" mnemonicParsing="false" prefHeight="100.0" prefWidth="180.0" style="-fx-background-color: #e3b31e;" styleClass="logo-button">
                             <font>
                                 <Font name="Wingdings 2" size="12.0" />
                             </font>
-                            <graphic>
-                                <ImageView fitHeight="68.0" fitWidth="158.0" pickOnBounds="true" preserveRatio="true">
-                                    <image>
-                                        <Image url="@../../../Terradomate.png" />
-                                    </image>
-                                </ImageView>
-                            </graphic>
                         </Button>
-                        <Button fx:id="btnEntregas" layoutX="218.0" layoutY="17.0" mnemonicParsing="false" onAction="#acessarEntregas" prefHeight="65.0" prefWidth="104.0" style="-fx-background-color: #556a2f;" text="ENTREGAS" textFill="WHITE" textOverrun="CLIP">
+                        <Button fx:id="btnEntregas" layoutX="409.0" layoutY="39.0" mnemonicParsing="false" onAction="#acessarEntregas" prefHeight="100.0" prefWidth="180.0" style="-fx-background-color: #816611;" text="ENTREGAS" textFill="WHITE" textOverrun="CLIP">
                             <font>
-                                <Font name="Dubai Regular" size="14.0" />
+                                <Font name="Dubai Regular" size="24.0" />
                             </font></Button>
-                        <Button fx:id="btnCadastros" layoutX="359.0" layoutY="16.0" mnemonicParsing="false" onAction="#acessarCadastros" prefHeight="66.0" prefWidth="104.0" style="-fx-background-color: #556a2f;" text="CADASTROS" textFill="WHITE">
+                        <Button fx:id="btnCadastros" layoutX="707.0" layoutY="38.0" mnemonicParsing="false" onAction="#acessarCadastros" prefHeight="100.0" prefWidth="180.0" style="-fx-background-color: #816611;" text="CADASTROS" textFill="WHITE">
                             <font>
-                                <Font name="Dubai Regular" size="14.0" />
+                                <Font name="Dubai Regular" size="24.0" />
                             </font>
                         </Button>
+                          <ImageView fitHeight="100.0" fitWidth="180.0" layoutX="104.0" layoutY="38.0" pickOnBounds="true" preserveRatio="true">
+                              <image>
+                                  <Image url="@../../../Terradomate.png" />
+                              </image>
+                          </ImageView>
                     </children>
                 </AnchorPane>
                 <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="100.0" prefWidth="160.0">
                     <children>
-                        <Button fx:id="btnCadastrarFuncionario" layoutX="79.0" layoutY="97.0" mnemonicParsing="false" onAction="#CadastrarFuncionario" prefHeight="52.0" prefWidth="104.0" style="-fx-background-color: #556a2f;" text="Cadastrar Funcionário" textAlignment="CENTER" textFill="WHITE" wrapText="true" />
-                        <Button fx:id="btnCadastrarMotorista" layoutX="248.0" layoutY="97.0" mnemonicParsing="false" onAction="#CadastrarMotorista" prefHeight="52.0" prefWidth="104.0" style="-fx-background-color: #556a2f;" text="Cadastrar Motorista" textAlignment="CENTER" textFill="WHITE" wrapText="true" />
-                        <Button fx:id="btnCadastrarFornecedor" layoutX="418.0" layoutY="97.0" mnemonicParsing="false" onAction="#CadastrarFornecedor" prefHeight="52.0" prefWidth="104.0" style="-fx-background-color: #556a2f;" text="Cadastrar Fornecedor" textAlignment="CENTER" textFill="WHITE" wrapText="true" />
+                        <Button fx:id="btnCadastrarFuncionario" layoutX="103.0" layoutY="188.0" mnemonicParsing="false" onAction="#CadastrarFuncionario" prefHeight="100.0" prefWidth="180.0" style="-fx-background-color: #816611;" text="Cadastrar Funcionário" textAlignment="CENTER" textFill="WHITE" wrapText="true">
+                     <font>
+                        <Font size="24.0" />
+                     </font></Button>
+                        <Button fx:id="btnCadastrarMotorista" layoutX="409.0" layoutY="188.0" mnemonicParsing="false" onAction="#CadastrarMotorista" prefHeight="100.0" prefWidth="180.0" style="-fx-background-color: #816611;" text="Cadastrar Motorista" textAlignment="CENTER" textFill="WHITE" wrapText="true">
+                     <font>
+                        <Font size="24.0" />
+                     </font></Button>
+                        <Button fx:id="btnCadastrarFornecedor" layoutX="711.0" layoutY="188.0" mnemonicParsing="false" onAction="#CadastrarFornecedor" prefHeight="100.0" prefWidth="180.0" style="-fx-background-color: #816611;" text="Cadastrar Fornecedor" textAlignment="CENTER" textFill="WHITE" wrapText="true">
+                     <font>
+                        <Font size="24.0" />
+                     </font></Button>
                     </children></AnchorPane>
             </items>
         </SplitPane>
