@@ -21,9 +21,8 @@ import javafx.stage.Stage;
 import java.io.IOException;
 import java.sql.SQLException;
 import java.util.ArrayList;
-import java.util.ResourceBundle;
 
-public class InserirRegistroController{
+public class InserirEntregaController {
 
     @FXML
     private Button btnEntrega;

@@ -2,14 +2,11 @@
 
 package com.erva.DAO;
 
-import com.erva.controller.InserirRegistroController;
 import com.erva.controller.MenuController;
 import com.erva.model.Entrega;
 import com.erva.model.Fornecedor;
 import com.erva.model.Funcionario;
 import com.erva.model.Motorista;
-import javafx.fxml.FXML;
-import javafx.scene.control.Label;
 
 import java.util.ArrayList;
 import java.sql.*;

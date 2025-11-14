@@ -36,23 +36,23 @@
                 </AnchorPane>
                 <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="100.0" prefWidth="160.0">
                <children>
-                  <Button fx:id="btnAcessarRegistros" layoutX="145.0" layoutY="97.0" mnemonicParsing="false" onAction="#acessarRegistros" prefHeight="100.0" prefWidth="180.0" style="-fx-background-color: #816611;" text="Acessar Registros" textAlignment="CENTER" textFill="WHITE" wrapText="true">
+                  <Button fx:id="btnAcessarRegistros" layoutX="145.0" layoutY="97.0" mnemonicParsing="false" onAction="#acessarRegistros" prefHeight="100.0" prefWidth="180.0" style="-fx-background-color: #816611;" text="Acessar Entregas" textAlignment="CENTER" textFill="WHITE" wrapText="true">
                      <font>
                         <Font size="24.0" />
                      </font></Button>
-                  <Button fx:id="btnInserirNovoRegistro" layoutX="409.0" layoutY="97.0" mnemonicParsing="false" onAction="#inserirNovoRegistro" prefHeight="100.0" prefWidth="180.0" style="-fx-background-color: #816611;" text="Inserir Novo Registro" textAlignment="CENTER" textFill="WHITE" wrapText="true">
+                  <Button fx:id="btnInserirNovoRegistro" layoutX="409.0" layoutY="97.0" mnemonicParsing="false" onAction="#inserirNovoRegistro" prefHeight="100.0" prefWidth="180.0" style="-fx-background-color: #816611;" text="Inserir Nova Entrega" textAlignment="CENTER" textFill="WHITE" wrapText="true">
                      <font>
                         <Font size="24.0" />
                      </font></Button>
-                  <Button fx:id="btnBuscarRegistro" layoutX="658.0" layoutY="97.0" mnemonicParsing="false" onAction="#buscarRegistro" prefHeight="100.0" prefWidth="180.0" style="-fx-background-color: #816611;" text="Buscar Registro" textAlignment="CENTER" textFill="WHITE" wrapText="true">
+                  <Button fx:id="btnBuscarRegistro" layoutX="658.0" layoutY="97.0" mnemonicParsing="false" onAction="#buscarRegistro" prefHeight="100.0" prefWidth="180.0" style="-fx-background-color: #816611;" text="Buscar Entrega" textAlignment="CENTER" textFill="WHITE" wrapText="true">
                      <font>
                         <Font size="24.0" />
                      </font></Button>
-                  <Button fx:id="btnRemoverRegistro" layoutX="262.0" layoutY="249.0" mnemonicParsing="false" onAction="#removerRegistro" prefHeight="100.0" prefWidth="180.0" style="-fx-background-color: #816611;" text="Remover Registro" textAlignment="CENTER" textFill="WHITE" wrapText="true">
+                  <Button fx:id="btnRemoverRegistro" layoutX="262.0" layoutY="249.0" mnemonicParsing="false" onAction="#removerRegistro" prefHeight="100.0" prefWidth="180.0" style="-fx-background-color: #816611;" text="Remover Entrega" textAlignment="CENTER" textFill="WHITE" wrapText="true">
                      <font>
                         <Font size="24.0" />
                      </font></Button>
-                  <Button fx:id="btnAtualizarRegistro" layoutX="536.0" layoutY="249.0" mnemonicParsing="false" onAction="#atualizarRegistro" prefHeight="100.0" prefWidth="180.0" style="-fx-background-color: #816611;" text="Atualizar Registro" textAlignment="CENTER" textFill="WHITE" wrapText="true">
+                  <Button fx:id="btnAtualizarRegistro" layoutX="536.0" layoutY="249.0" mnemonicParsing="false" onAction="#atualizarRegistro" prefHeight="100.0" prefWidth="180.0" style="-fx-background-color: #816611;" text="Atualizar Entrega" textAlignment="CENTER" textFill="WHITE" wrapText="true">
                      <font>
                         <Font size="24.0" />
                      </font></Button>

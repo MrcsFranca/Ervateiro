@@ -35,7 +35,7 @@ public class EntregasController {
     @FXML
     void atualizarRegistro(ActionEvent event) {
         try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/erva/ervateiro/atualizarRegistro.fxml"));
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/erva/ervateiro/AtualizarEntrega.fxml"));
             Parent telaRegistros = loader.load();
 
             Stage stage = new Stage();
@@ -105,7 +105,7 @@ public class EntregasController {
             Parent telaRegistros = loader.load();
 
             Stage stage = new Stage();
-            stage.setTitle("AcessarRegistros");
+            stage.setTitle("Acessar Entregas");
             stage.setScene(new Scene(telaRegistros));
             stage.show();
         } catch (IOException e) {
@@ -116,11 +116,11 @@ public class EntregasController {
     @FXML
     void buscarRegistro(javafx.event.ActionEvent actionEvent) throws SQLException {
         try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/erva/ervateiro/BuscarRegistro.fxml"));
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/erva/ervateiro/BuscarEntrega.fxml"));
             Parent telaRegistros = loader.load();
 
             Stage stage = new Stage();
-            stage.setTitle("BuscarRegistros");
+            stage.setTitle("Buscar Entregas");
             stage.setScene(new Scene(telaRegistros));
             stage.show();
         } catch (IOException e) {
@@ -131,11 +131,11 @@ public class EntregasController {
     @FXML
     void inserirNovoRegistro(javafx.event.ActionEvent actionEvent) throws SQLException {
         try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/erva/ervateiro/InserirRegistro.fxml"));
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/erva/ervateiro/InserirEntrega.fxml"));
             Parent telaRegistros = loader.load();
 
             Stage stage = new Stage();
-            stage.setTitle("InserirRegistro");
+            stage.setTitle("Inserir Entrega");
             stage.setScene(new Scene(telaRegistros));
             stage.setMaximized(false);
             stage.setResizable(false);

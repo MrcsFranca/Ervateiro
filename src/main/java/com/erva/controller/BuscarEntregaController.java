@@ -10,14 +10,10 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
 import com.erva.model.Entrega;
-import com.erva.DAO.EntregaDAO;
 import com.erva.DAO.EntregaDAOJDBC;
-import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
-import javax.swing.text.PlainDocument;
-import java.awt.*;
 import java.io.IOException;
 import java.sql.SQLException;
 import java.sql.Timestamp;
@@ -26,7 +22,7 @@ import java.time.LocalDateTime;
 import java.time.LocalTime;
 import java.util.ArrayList;
 
-public class BuscarRegistroController {
+public class BuscarEntregaController {
 
     @FXML
     private RadioButton CultivadaRadioBtn;

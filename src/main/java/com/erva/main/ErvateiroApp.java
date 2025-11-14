@@ -11,7 +11,7 @@ public class ErvateiroApp extends Application {
 
     @Override
     public void start(Stage primaryStage) throws Exception {
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/erva/ervateiro/menu.fxml"));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/erva/ervateiro/Menu.fxml"));
         Scene scene = new Scene(loader.load());
         primaryStage.setTitle("Tabela de Entregas");
         primaryStage.setScene(scene);
