@@ -49,4 +49,7 @@ public enum DataBaseConfig {
 
 ## 👀 Testes
 
-Link para documentação de testes implementados: [https://docs.google.com/document/d/1sBkfm4uLApjHHl3W5LN3U8QfCsoXb4bS8niPTs3Hdsc/edit?usp=sharing](https://docs.google.com/document/d/1JutGgenEeNdbi88ZZAvh62cBpyZ_oESQFYhhmmqb9dA/edit?tab=t.0)
+Link para documentação de testes implementados: [https://docs.google.com/document/d/1sBkfm4uLApjHHl3W5LN3U8QfCsoXb4bS8niPTs3Hdsc/edit?usp=sharing](https://docs.google.com/document/d/1JutGgenEeNdbi88ZZAvh62cBpyZ_oESQFYhhmmqb9dA/edit?tab=t.0)  
+
+## ✍️ Refatoração
+Link para documentação da refatoração do código: https://docs.google.com/document/d/1qF9QP_H2nsv_zDQ4ufGmz03hS1sVO8wpdA1UFOs6faQ/edit?usp=sharing
